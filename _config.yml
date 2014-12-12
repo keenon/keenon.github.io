@@ -1,0 +1,12 @@
+# Site settings
+title: There must be a better way
+email: keenon@stanford.edu
+description: > # this means to ignore newlines until "baseurl:"
+  Keenon Werling rants about things, and leaves it on the Internet
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://keenon.github.io" # the base hostname & protocol for your site
+# twitter_username: jekyllrb
+github_username:  keenon
+
+# Build settings
+markdown: kramdown

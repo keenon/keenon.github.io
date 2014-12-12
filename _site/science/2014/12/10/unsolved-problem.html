@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>The ''Unsolved Problem'' Problem</title>
+    <meta name="description" content="Keenon Werling rants about things, and leaves it on the Internet
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://keenon.github.io/science/2014/12/10/unsolved-problem.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">There must be a better way</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">The ''Unsolved Problem'' Problem</h1>
+    <p class="post-meta">Dec 10, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <p>Suppose your life depends on solving a problem that nobody in the world knows how to solve. A natural (and modest) instinct might be to lose hope. After all, the world is a very large place, and if none of its 7.125 billion people have already solved this problem, it must be very hard indeed. Wouldn’t it be arrogant to assume you’d be the one to solve it?</p>
+
+<p>Perhaps it is, just a little, but it’s a socially responsible kind of arrogance. If nobody was ever self-confident enough to think that maybe they’d be the one to crack the puzzle, we’d still be sitting in caves, telling our kids that it is only God who can make fire. It requires a certain swaggering confidence to forego easy, low-risk, low-impact happiness (hunting boar) in favor of hard work, long hours, and a small chance of making a real contribution (setting out to make fire).</p>
+
+<p>So suppose that you can screw up your courage to believe for the briefest of moments that you’ll be able to accomplish something where everyone else has failed. What can you do? The first instinct is to start trying things as they occur to you: Think about your problem for a bit, come up with something that seems like it might work, try it, and if it fails, give up until you have another idea, and then start back at the beginning.</p>
+
+<p>I’ve found that this “Undisciplined Method’’ (the haphazard trying of stuff) is surprisingly seductive for engineers trying to solve hard problems (among whom I count myself). It doesn’t require much in the way of planning or testing, which are easy to look at as overhead. It also lets me spend the vast majority of my time building things, which is what I love to do. It’s my suspicion that this tendency is a general human instinct, not just of interest to engineers.</p>
+
+<p>The fact that the Undisciplined Method is so seductive makes it that much harder to really internalize what I’m about to say: It hardly ever works. For a problem of even modest complexity (machine learning research, product development, etc.) your intuition about what to try next is probably right 5% of the time, and you’ve got no meta-intuition about when that 5% is taking place.</p>
+
+<p>You might reasonably ask “Why is a low success-rate a problem? We’re working at the edge of human understanding here! You should be grateful for any progress you make at all.” You wouldn’t be wrong. This instinctive method was responsible for all human progress up through the Renaissance, and for much of progress since. But as with all things, there is a better way.</p>
+
+<p>Your most useful resource when you devote yourself to research is time. With infinite time, any reasonable strategy for knowledge discovery will work. But when there’s a paper deadline next weekend, there’s a much more concrete need to optimize your research process. In order to do that, we need a little bit more understanding.</p>
+
+<p>I learned about the “Scientific Method’’ in high school, and at the time dismissed it as so obvious as to be completely useless. My impression of it wasn’t helped by worksheets where I was asked to “Form a hypothesis about what will happen to the apple when we drop it.’’ I would respond “It will fall. This is the stupidest class ever.’’ In my experience, for one reason or another, many researchers and would-be entrepreneurs have similarly dismissed the Scientific Method.</p>
+
+<p>The Scientific Method is profound. The reason I felt it was useless in high school was because I was being asked to apply it to knowledge that was already well understood. When operating at the margins of human understanding, the Scientific Method forms a very strong foundation for success. This is best understood in contrast to the Undisciplined Method.</p>
+
+<p>The Undisciplined Method generates results poorly for several reasons: First, hypothesis and metrics to measure them are often poorly defined, so experimental validation is difficult and learning from failed experiments is hard. Second, there’s a lack of emphasis on data collection and understanding, for the dubious reason that it’s too time consuming to do so. This results in a poorer initial hypothesis on subsequent experiments. Third, there’s little or no thought at the beginning of an experiment to make sure that the information gained by the experiment is bought at a minimum cost of time and energy.</p>
+
+<p>The Scientific Method, when followed rigorously, addresses these issues. </p>
+
+<ul>
+  <li>Begin with understanding existing approaches, and collect data.</li>
+  <li><em>Spend time understanding your data before forming your first hypothesis.</em> This may feel like a waste of time initially. <em>It is not.</em> A poor initial hypothesis wastes far more time than a few days of data analysis.</li>
+  <li>Form an educated, <em>falsifiable</em> hypothesis about a solution to your problem. Think hard about the tests you will run, and the way you will diagnose and learn from this experiment if it fails to solve your problem.</li>
+  <li>Only then, build it, and run the experiment (this will still take the most time of any of these steps, absent a good framework to do this for you).</li>
+  <li>Run the error analysis you planned in advance. If the experiment proves a failure, which is the likely outcome, gather what information you can, incorporate that into your existing understanding of the problem, and go back to form another hypothesis.</li>
+</ul>
+
+<p>The hard part here is hypothesis formation, and there’s no way to do it right, so you’ll have to settle for doing it “pretty good’’ by making tons of measurements in advance of any hypothesis. Any idiot with sufficient data and time can come up with a reasonable idea of what to try. Testing that reasonable idea, as long as you have good measurements in place, will bring you that much closer to a solution, and if that still doesn’t work, try, try again.</p>
+
+<p>None of this is easy in practice. I’m consistently amazed by business people rediscovering the Scientific Method by another name, and thinking they’ve uncovered something new. “The Lean Startup’’, “Data-Driven Management’’, and “Design Thinking’’ are buzzwords that come to mind. Really they’re all just proposing “Step 1: Science, Step 2: Profit’’. The reason that they keep selling books is because, while the Scientific Method is tremendously powerful, it is counter-intuitive, and emotionally difficult. It’s much easier to lapse back into the Undisciplined Method than any active researcher cares to admit.</p>
+
+<p>So don’t. If you can muster the courage to try, and the discipline to follow through in the most efficient way, you could solve that hard problem, and it won’t take your whole career to do it :)</p>
+
+<p>Cheers,
+Keenon</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">There must be a better way</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>There must be a better way</li>
+          <li><a href="mailto:keenon@stanford.edu">keenon@stanford.edu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/keenon">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">keenon</span>
+            </a>
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Keenon Werling rants about things, and leaves it on the Internet
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

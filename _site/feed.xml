@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>There must be a better way</title>
+    <description>Keenon Werling rants about things, and leaves it on the Internet
+</description>
+    <link>http://keenon.github.io/</link>
+    <atom:link href="http://keenon.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 11 Dec 2014 19:25:42 -0800</pubDate>
+    <lastBuildDate>Thu, 11 Dec 2014 19:25:42 -0800</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>The &#39;&#39;Unsolved Problem&#39;&#39; Problem</title>
+        <description>&lt;p&gt;Suppose your life depends on solving a problem that nobody in the world knows how to solve. A natural (and modest) instinct might be to lose hope. After all, the world is a very large place, and if none of its 7.125 billion people have already solved this problem, it must be very hard indeed. Wouldn’t it be arrogant to assume you’d be the one to solve it?&lt;/p&gt;
+
+&lt;p&gt;Perhaps it is, just a little, but it’s a socially responsible kind of arrogance. If nobody was ever self-confident enough to think that maybe they’d be the one to crack the puzzle, we’d still be sitting in caves, telling our kids that it is only God who can make fire. It requires a certain swaggering confidence to forego easy, low-risk, low-impact happiness (hunting boar) in favor of hard work, long hours, and a small chance of making a real contribution (setting out to make fire).&lt;/p&gt;
+
+&lt;p&gt;So suppose that you can screw up your courage to believe for the briefest of moments that you’ll be able to accomplish something where everyone else has failed. What can you do? The first instinct is to start trying things as they occur to you: Think about your problem for a bit, come up with something that seems like it might work, try it, and if it fails, give up until you have another idea, and then start back at the beginning.&lt;/p&gt;
+
+&lt;p&gt;I’ve found that this “Undisciplined Method’’ (the haphazard trying of stuff) is surprisingly seductive for engineers trying to solve hard problems (among whom I count myself). It doesn’t require much in the way of planning or testing, which are easy to look at as overhead. It also lets me spend the vast majority of my time building things, which is what I love to do. It’s my suspicion that this tendency is a general human instinct, not just of interest to engineers.&lt;/p&gt;
+
+&lt;p&gt;The fact that the Undisciplined Method is so seductive makes it that much harder to really internalize what I’m about to say: It hardly ever works. For a problem of even modest complexity (machine learning research, product development, etc.) your intuition about what to try next is probably right 5% of the time, and you’ve got no meta-intuition about when that 5% is taking place.&lt;/p&gt;
+
+&lt;p&gt;You might reasonably ask “Why is a low success-rate a problem? We’re working at the edge of human understanding here! You should be grateful for any progress you make at all.” You wouldn’t be wrong. This instinctive method was responsible for all human progress up through the Renaissance, and for much of progress since. But as with all things, there is a better way.&lt;/p&gt;
+
+&lt;p&gt;Your most useful resource when you devote yourself to research is time. With infinite time, any reasonable strategy for knowledge discovery will work. But when there’s a paper deadline next weekend, there’s a much more concrete need to optimize your research process. In order to do that, we need a little bit more understanding.&lt;/p&gt;
+
+&lt;p&gt;I learned about the “Scientific Method’’ in high school, and at the time dismissed it as so obvious as to be completely useless. My impression of it wasn’t helped by worksheets where I was asked to “Form a hypothesis about what will happen to the apple when we drop it.’’ I would respond “It will fall. This is the stupidest class ever.’’ In my experience, for one reason or another, many researchers and would-be entrepreneurs have similarly dismissed the Scientific Method.&lt;/p&gt;
+
+&lt;p&gt;The Scientific Method is profound. The reason I felt it was useless in high school was because I was being asked to apply it to knowledge that was already well understood. When operating at the margins of human understanding, the Scientific Method forms a very strong foundation for success. This is best understood in contrast to the Undisciplined Method.&lt;/p&gt;
+
+&lt;p&gt;The Undisciplined Method generates results poorly for several reasons: First, hypothesis and metrics to measure them are often poorly defined, so experimental validation is difficult and learning from failed experiments is hard. Second, there’s a lack of emphasis on data collection and understanding, for the dubious reason that it’s too time consuming to do so. This results in a poorer initial hypothesis on subsequent experiments. Third, there’s little or no thought at the beginning of an experiment to make sure that the information gained by the experiment is bought at a minimum cost of time and energy.&lt;/p&gt;
+
+&lt;p&gt;The Scientific Method, when followed rigorously, addresses these issues. &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Begin with understanding existing approaches, and collect data.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Spend time understanding your data before forming your first hypothesis.&lt;/em&gt; This may feel like a waste of time initially. &lt;em&gt;It is not.&lt;/em&gt; A poor initial hypothesis wastes far more time than a few days of data analysis.&lt;/li&gt;
+  &lt;li&gt;Form an educated, &lt;em&gt;falsifiable&lt;/em&gt; hypothesis about a solution to your problem. Think hard about the tests you will run, and the way you will diagnose and learn from this experiment if it fails to solve your problem.&lt;/li&gt;
+  &lt;li&gt;Only then, build it, and run the experiment (this will still take the most time of any of these steps, absent a good framework to do this for you).&lt;/li&gt;
+  &lt;li&gt;Run the error analysis you planned in advance. If the experiment proves a failure, which is the likely outcome, gather what information you can, incorporate that into your existing understanding of the problem, and go back to form another hypothesis.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The hard part here is hypothesis formation, and there’s no way to do it right, so you’ll have to settle for doing it “pretty good’’ by making tons of measurements in advance of any hypothesis. Any idiot with sufficient data and time can come up with a reasonable idea of what to try. Testing that reasonable idea, as long as you have good measurements in place, will bring you that much closer to a solution, and if that still doesn’t work, try, try again.&lt;/p&gt;
+
+&lt;p&gt;None of this is easy in practice. I’m consistently amazed by business people rediscovering the Scientific Method by another name, and thinking they’ve uncovered something new. “The Lean Startup’’, “Data-Driven Management’’, and “Design Thinking’’ are buzzwords that come to mind. Really they’re all just proposing “Step 1: Science, Step 2: Profit’’. The reason that they keep selling books is because, while the Scientific Method is tremendously powerful, it is counter-intuitive, and emotionally difficult. It’s much easier to lapse back into the Undisciplined Method than any active researcher cares to admit.&lt;/p&gt;
+
+&lt;p&gt;So don’t. If you can muster the courage to try, and the discipline to follow through in the most efficient way, you could solve that hard problem, and it won’t take your whole career to do it :)&lt;/p&gt;
+
+&lt;p&gt;Cheers,
+Keenon&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
+        <link>http://keenon.github.io/science/2014/12/10/unsolved-problem.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/science/2014/12/10/unsolved-problem.html</guid>
+        
+        
+        <category>science</category>
+        
+      </item>
+    
+      <item>
+        <title>On Reading History</title>
+        <description>&lt;p&gt;I finished reading &lt;em&gt;The Invisible Bridge: The Fall of Nixon and Rise of Reagan&lt;/em&gt; by Rick Pearlstein a few weeks ago. It was an exceptionally partisan and generally untrustworthy account of recent history, but it contains an interesting throughline. To hear him tell it, once upon a time (in that great righteous WW2 blah blah blah), we were all patriotic, and the Presidency of the United States of America meant something. We won a wholly morally justified war against the Nazis, and with it an American Peace. We were the greatest nation on Earth, and we knew it. Then came Vietnam, and Watergate, and our dreams came tumbling down. Nixon was a monster and a criminal, and Americans didn’t believe in America anymore. The book goes on to argue that Reagan went about pulling wool back over American’s eyes, and that he postponed a still pending American “growing up”.&lt;/p&gt;
+
+&lt;p&gt;Full disclosure: I vote Democratic. Even so, it’s hard to trust a book that leans so far left that it talks about Senate subcommitties being “larded by Republicans.” But the argument of the book aside, you often learn the most by examining the choice of “moral of the story” that history books are trying to validate, not their actual arguments, which come in the form of the main narrative. This book seems to be taking notice of a wave of cynicism in America (on this we agree). It would like us to assume with it that defeat in Vietnam was the inevitable fate for an irresonsible and immature superpower (probably also true). It would also like us to believe that a national “growing up” is possible only if Americans become more cynical (more dubious). I’m not completely sure about any of those claims, but aren’t they terribly interesting? Much more so than a discussion of Reagan’s early years as a lifeguard and radio announcer, which occupy a bulk of the pages.&lt;/p&gt;
+
+&lt;p&gt;Cheers,
+Keenon&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
+        <link>http://keenon.github.io/culture/2014/12/10/reading-history.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/culture/2014/12/10/reading-history.html</guid>
+        
+        
+        <category>culture</category>
+        
+      </item>
+    
+      <item>
+        <title>America&#39;s Villain Complex</title>
+        <description>&lt;p&gt;SPOILER ALERT: If you haven’t watched Season 1 of Game of Thrones, there’s a fairly substantial spoiler in here&lt;/p&gt;
+
+&lt;p&gt;There are two TV shows I’d recommend you see: &lt;em&gt;Game of Thrones&lt;/em&gt;, and &lt;em&gt;House of Cards&lt;/em&gt;. If nothing else they say a lot about the American psyche.&lt;/p&gt;
+
+&lt;p&gt;In both shows (which are both smash-hit successes), protaganists with hopelessly skewed moral complexes get what they want (which is always Power, with a capital P) by manipulating, lying, and cheating. We call this “realism,” and we love it. When a character in Game of Thrones flippantly says “Lord Stark was an honorable man, and Lord Stark died,” all of us watching at home nod in agreement. This is reality, we say. It’s nasty, people cheat to get what they want, and if you want to get ahead, you have to play dirty. If you’re too honorable and kind, you’ll never make it.&lt;/p&gt;
+
+&lt;p&gt;Pay special attention to that last sentence. If you didn’t make it, maybe it’s because you &lt;em&gt;were too honorable and kind.&lt;/em&gt; The hyper-cynical world-view we love to watch on TV has a strangely comforting upshot: those who lose in competition with others are endowed with moral virtue. It’s an ingenious way to reconcile the tautological fact that only 1% of the population can be in the top 1%, and Walt Disney telling you that you can be anything you want to be. Maybe that 1% are a bunch of sons-of-bitches, and the rest of us 99% are really just honorable souls who could’ve made it to the top, but would rather be kind to people.&lt;/p&gt;
+
+&lt;p&gt;There may be some truth to it, and it certainly does comfort many, but I’m uncomfortable with the conclusions that really ambitious kids draw from this ethic that’s floating around.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;You don’t have to be a Sadist to get ahead.&lt;/em&gt; In fact, people won’t work with a back-stabber, and if nobody will work with you, you’ll never take over Poland, no matter how hard you try. Don’t let me ruin your enjoyment, but take your TV with a grain of salt. It’s just a darker kind of Fairy Tale, and no less fanciful for being more brutal.&lt;/p&gt;
+
+&lt;p&gt;Cheers,
+Keenon&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
+        <link>http://keenon.github.io/culture/2014/12/10/good-and-evil.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/culture/2014/12/10/good-and-evil.html</guid>
+        
+        
+        <category>culture</category>
+        
+      </item>
+    
+  </channel>
+</rss>
