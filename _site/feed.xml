@@ -6,8 +6,8 @@
 </description>
     <link>http://keenon.github.io/</link>
     <atom:link href="http://keenon.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 11 Dec 2014 19:25:42 -0800</pubDate>
-    <lastBuildDate>Thu, 11 Dec 2014 19:25:42 -0800</lastBuildDate>
+    <pubDate>Fri, 12 Dec 2014 13:00:18 -0800</pubDate>
+    <lastBuildDate>Fri, 12 Dec 2014 13:00:18 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -61,6 +61,118 @@ Keenon&lt;/p&gt;
       </item>
     
       <item>
+        <title>Real Valued Multi-Armed Bandits</title>
+        <description>&lt;p&gt;Optimizing a modern digital product is complicated, labor intensive, and riddled with traps. The current state of the industry (though by no means state-of-the-art) is to use A/B testing to optimize websites. This involves getting a designer to make several different versions of something you’d like to optimize (say, a landing page), and then presenting each option to a randomly selected subset of the traffic to your site. By measuring visitors’ behavior on each of the versions, you can pick the one that maximizes profit for your business. The leader in the space has &lt;a href=&quot;https://www.optimizely.com/ab-testing/&quot;&gt;a great explanation of A/B testing&lt;/a&gt;, if you want more detail.&lt;/p&gt;
+
+&lt;p&gt;The trouble is, A/B testing is hopelessly limited. You have to specify all your experiments in advance, and your only degree of freedom to optimize against is which version you choose. In mathematical terms, my gripe with A/B testing is that it’s over &lt;em&gt;discrete space&lt;/em&gt;. For something like a videogame, where there’s lots of &lt;em&gt;continuous space&lt;/em&gt; (how high should you be able to jump, how much health should you have, etc), you need a more sophisticated method for optimization.&lt;/p&gt;
+
+&lt;p&gt;That’s what we’ve created.&lt;/p&gt;
+
+&lt;p&gt;In probability, there’s a concept of &lt;a href=&quot;http://en.wikipedia.org/wiki/Expected_value&quot;&gt;expected value&lt;/a&gt;, which is&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/bandit/figure_2.png&quot; alt=&quot;Golden user preferences&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/bandit/figure_3.png&quot; alt=&quot;Learned user preferences&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We choose to model the transition probabilities from a node to a given child by the output of an SVM, normalized across the multiple possible outputs.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+f(x) \propto \sum_{i = 1}^m a_iy_iK(x_i,x) + b
+&lt;/script&gt;
+
+&lt;p&gt;We have a set of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; children, where child &lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt; has expected value &lt;script type=&quot;math/tex&quot;&gt;E_i&lt;/script&gt;. We are interested in our expected value, given a choice of &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;, representing the feature vector for creating a website.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+E(x) = \frac{\sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x) + b_i)}{\sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x) + b_i}
+&lt;/script&gt;
+
+&lt;p&gt;We wish to choose an &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; that maximizes our expected value under the model, given our evidence so far. This is non-convex, so we’d like a solution in closed form. Begin by taking the derivative&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\frac{d}{dx}E(x) = \frac{d}{dx}\frac{\sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x) + b_i)}{\sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x) + b_i}
+&lt;/script&gt;
+
+&lt;p&gt;In order to fit the entire derivative on one line, let:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+d(x) = \sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x)
+&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+e(x) = \sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x))
+&lt;/script&gt;
+
+&lt;p&gt;Then by the quotient rule, we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\frac{d}{dx}E(x) = \frac{d(x)\frac{d}{dx}e(x) - e(x)\frac{d}{dx}d(x)}{(d(x))^2}
+&lt;/script&gt;
+
+&lt;p&gt;Following convention, let’s choose the Guassian kernel as our kernel:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+K(y,x) = e^{-\frac{||x-y||^2}{2\sigma^2}}
+&lt;/script&gt;
+
+&lt;p&gt;We’ll need the derivative also. We use the fact: &lt;script type=&quot;math/tex&quot;&gt;
+||x-y||^2 = ||x||^2 - 2x^Ty + ||y||^2
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\frac{d}{dx} K(y,x) = \frac{d}{dx} e^{-\frac{||x||^2 - 2x^Ty + ||y||^2}{2\sigma^2}}
+&lt;/script&gt;
+
+&lt;p&gt;Then we apply the chain rule and arrive at&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\frac{d}{dx} K(y,x) = (e^{-\frac{||x||^2 - 2x^Ty + ||y||^2}{2\sigma^2}})*(\frac{y - x}{\sigma^2})
+&lt;/script&gt;
+
+&lt;p&gt;And simplifying:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\frac{d}{dx} K(y,x) = e^{-\frac{||x-y||^2}{2\sigma^2}}(\frac{y - x}{\sigma^2})
+&lt;/script&gt;
+
+&lt;p&gt;Then we can substitute in and get our final derivative (written in pieces so it fits onto a sheet of paper):&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+d(x) = \sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}e^{-\frac{||x-x_j^{(i)}||^2}{2\sigma^2}}
+&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\frac{d}{dx}d(x) = \sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}e^{-\frac{||x-x_j^{(i)}||^2}{2\sigma^2}}(\frac{x_j^{(i)} - x}{\sigma^2})
+&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+e(x) = \sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}e^{-\frac{||x-x_j^{(i)}||^2}{2\sigma^2}})
+&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\frac{d}{dx}e(x) = \sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}e^{-\frac{||x-x_j^{(i)}||^2}{2\sigma^2}}(\frac{x_j^{(i)} - x}{\sigma^2}))
+&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\frac{d}{dx}E(x) = \frac{d(x)\frac{d}{dx}e(x) - e(x)\frac{d}{dx}d(x)}{(d(x))^2}
+&lt;/script&gt;
+
+&lt;p&gt;Our expectation in &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; is non-concave and has many local optima. In practice, we use gradient descent with several restarts per problem to find the best value we can, with no optimality guarantees. Below is a graph of a gradient check on a toy dataset, with 6 potential user actions, each with a different expected value, resulting in 2 distinct (identical) peaks.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/bandit/figure_1.png&quot; alt=&quot;Gradient check for multi-armed bandit&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cheers,
+Keenon&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
+        <link>http://keenon.github.io/machine_learning/2014/12/10/real-valued-bandit.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/machine_learning/2014/12/10/real-valued-bandit.html</guid>
+        
+        
+        <category>machine_learning</category>
+        
+      </item>
+    
+      <item>
         <title>On Reading History</title>
         <description>&lt;p&gt;I finished reading &lt;em&gt;The Invisible Bridge: The Fall of Nixon and Rise of Reagan&lt;/em&gt; by Rick Pearlstein a few weeks ago. It was an exceptionally partisan and generally untrustworthy account of recent history, but it contains an interesting throughline. To hear him tell it, once upon a time (in that great righteous WW2 blah blah blah), we were all patriotic, and the Presidency of the United States of America meant something. We won a wholly morally justified war against the Nazis, and with it an American Peace. We were the greatest nation on Earth, and we knew it. Then came Vietnam, and Watergate, and our dreams came tumbling down. Nixon was a monster and a criminal, and Americans didn’t believe in America anymore. The book goes on to argue that Reagan went about pulling wool back over American’s eyes, and that he postponed a still pending American “growing up”.&lt;/p&gt;
 
@@ -85,6 +197,8 @@ Keenon&lt;/p&gt;
 &lt;p&gt;There are two TV shows I’d recommend you see: &lt;em&gt;Game of Thrones&lt;/em&gt;, and &lt;em&gt;House of Cards&lt;/em&gt;. If nothing else they say a lot about the American psyche.&lt;/p&gt;
 
 &lt;p&gt;In both shows (which are both smash-hit successes), protaganists with hopelessly skewed moral complexes get what they want (which is always Power, with a capital P) by manipulating, lying, and cheating. We call this “realism,” and we love it. When a character in Game of Thrones flippantly says “Lord Stark was an honorable man, and Lord Stark died,” all of us watching at home nod in agreement. This is reality, we say. It’s nasty, people cheat to get what they want, and if you want to get ahead, you have to play dirty. If you’re too honorable and kind, you’ll never make it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.chzbgr.com/maxW500/7642998272/hEA77CF0F/&quot; alt=&quot;picture&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pay special attention to that last sentence. If you didn’t make it, maybe it’s because you &lt;em&gt;were too honorable and kind.&lt;/em&gt; The hyper-cynical world-view we love to watch on TV has a strangely comforting upshot: those who lose in competition with others are endowed with moral virtue. It’s an ingenious way to reconcile the tautological fact that only 1% of the population can be in the top 1%, and Walt Disney telling you that you can be anything you want to be. Maybe that 1% are a bunch of sons-of-bitches, and the rest of us 99% are really just honorable souls who could’ve made it to the top, but would rather be kind to people.&lt;/p&gt;
 
