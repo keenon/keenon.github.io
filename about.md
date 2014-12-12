@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hi, I'm Keenon Werling, a Junior studying Computer Science at Stanford. This is where I keep all the ideas that are too hard to explain in a passing conversation, but that I'm still interested with telling somebody about. Topics vary from Natural Language Processing (my research concentration of over a year now), Silicon Valley, History, Culture, Machine Learnin, and anything else that I find time to type up.
+Hi, I'm Keenon Werling, a Junior studying Computer Science at Stanford. This is where I keep all the ideas that are too hard to explain in a passing conversation, but that I'm still interested with telling somebody about. Topics vary from Natural Language Processing (my research concentration of over a year now), Silicon Valley, History, Culture, Machine Learning, and anything else that I find time to type up.
 
 My current article TODO list:
 
