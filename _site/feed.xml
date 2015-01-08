@@ -6,12 +6,71 @@
 </description>
     <link>http://keenon.github.io/</link>
     <atom:link href="http://keenon.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 14 Dec 2014 19:12:07 -0800</pubDate>
-    <lastBuildDate>Sun, 14 Dec 2014 19:12:07 -0800</lastBuildDate>
+    <pubDate>Thu, 08 Jan 2015 14:49:01 -0800</pubDate>
+    <lastBuildDate>Thu, 08 Jan 2015 14:49:01 -0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>The &#39;&#39;Unsolved Problem&#39;&#39; Problem</title>
+        <title>MinimalML: The Minifesto</title>
+        <description>&lt;p&gt;What’s the most important resource in Machine Learning research? It isn’t compute power, office space, or white boards. It’s &lt;em&gt;time&lt;/em&gt;. Anything we can do to use it more effectively translates directly into better results. In any computer science curriculum, they’ll teach you what to do if something is taking too long.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Double check that this isn’t &lt;a href=&quot;http://en.wikipedia.org/wiki/Program_optimization&quot;&gt;premature optimization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Measure where your bottlenecks are&lt;/li&gt;
+  &lt;li&gt;Exterminate them with maximum prejudice&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;With MinimalML, I’ve set out to implement tools in software that optimize the ML research. Although ML research is software heavy, it is fundamentally a human operation, so the analogy to optimization is stretched at places. With that in mind, let’s go through the checklist together.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;1: Be mature, then optimization&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I wrote a post about good research discipline a few weeks ago, &lt;a href=&quot;/science/2014/12/10/unsolved-problem.html&quot;&gt;The “Unsolved Problem” Problem&lt;/a&gt;. In summary, I’ve experienced two kinds of research methodologies: The “Undisciplined Method”, and the “Scientific Method.” Far more frequently, the “Undisciplined Method” reigns. When confronted with a new problem, we think about our problem for half a day, whiteboard a few potential solutions, and then spend weeks building the sexiest thing we came up with. We then inevitably (well, 95% of the time) discover the sexy solution underperforms the baseline, and we have insufficient tools to understand why. For the full rant, see &lt;a href=&quot;/science/2014/12/10/unsolved-problem.html&quot;&gt;the original post&lt;/a&gt;. Any research pipeline should optimize the Scientific Method.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;2: Find bottlenecks&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s easier to analyze research if you have an algorithm for it. In the spirit of mature optimization, we’ll optimize the correct algorithm: the Scientific Method.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Form a hypothesis (usually, this means write down new features to try)&lt;/li&gt;
+  &lt;li&gt;Write code to test the hypothesis&lt;/li&gt;
+  &lt;li&gt;Write code to analyze the test results&lt;/li&gt;
+  &lt;li&gt;Run the code&lt;/li&gt;
+  &lt;li&gt;Stare at the output until understanding is reached, helped by any automatic analysis tools&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Depending on your situation, any of these could be the bottleneck. With very large datasets, running the code can take days, thus slowing you to two or three cycles through this loop per week. It could also be that writing the code for each hypothesis test can take minutes or weeks, depending on whether you’re changing features or trying a whole new model. Writing code to for analysis is rarely the bottleneck, because an impending sense of doom (or too much trust in Unix tools) will cause researchers to pack up and hurry along to step 4. Staring at the output should rightly be the bottleneck, but is often slower than it needs to be because there aren’t enough tools to properly analyze the system.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;3: Crush bottlenecks like small insects&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s the key idea behind all of MinimalML: All you ever needed was logistic regression and a polynomial kernel.&lt;/p&gt;
+
+&lt;p&gt;I know that’s an unsexy opinion, so let me defend myself. Non-linear classifiers are only slightly less dependant on feature selection than linear classifiers. Even a 8 layer neural net with 1000 hidden units per layer is still only able to predict based on inputs you provide. If those inputs are too rich, no amount of dropout will save you from not having enough training data (if you’re Google, good for you, this doesn’t apply to you). On the other hand, if those inputs are too narrow, even a real human being won’t be able to figure it out. So feature selection is important.&lt;/p&gt;
+
+&lt;p&gt;It’s good to remember that in practice, we almost never rely on the assumptions about the data that underly a given classifier type. Using linear classifiers doesn’t mean you’re assuming that the data is naturally linearly seperable, or that feature weights should behave linearly with one another. It means instead that you’re willing to write all the feature combinations that the classifier will have to watch out for, until the task &lt;em&gt;becomes&lt;/em&gt; linear, which usually means that there’s only one highly weighted feature firing per example.&lt;/p&gt;
+
+&lt;p&gt;Things to cover:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Subclass Experiment Workflow&lt;/li&gt;
+  &lt;li&gt;Multivectors&lt;/li&gt;
+  &lt;li&gt;Spark&lt;/li&gt;
+  &lt;li&gt;Reusable Analysis&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cheers,
+Keenon&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Jan 2015 03:53:34 -0800</pubDate>
+        <link>http://keenon.github.io/opensource/2015/01/08/minimal-ml.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/opensource/2015/01/08/minimal-ml.html</guid>
+        
+        
+        <category>opensource</category>
+        
+      </item>
+    
+      <item>
+        <title>The ''Unsolved Problem'' Problem</title>
         <description>&lt;p&gt;Suppose your life depends on solving a problem that nobody in the world knows how to solve. A natural (and modest) instinct might be to lose hope. After all, the world is a very large place, and if none of its 7.125 billion people have already solved this problem, it must be very hard indeed. Wouldn’t it be arrogant to assume you’d be the one to solve it?&lt;/p&gt;
 
 &lt;p&gt;Perhaps it is, just a little, but it’s a socially responsible kind of arrogance. If nobody was ever self-confident enough to think that maybe they’d be the one to crack the puzzle, we’d still be sitting in caves, telling our kids that it is only God who can make fire. It requires a certain swaggering confidence to forego easy, low-risk, low-impact happiness (hunting boar) in favor of hard work, long hours, and a small chance of making a real contribution (setting out to make fire).&lt;/p&gt;
@@ -195,25 +254,7 @@ Keenon&lt;/p&gt;
       </item>
     
       <item>
-        <title>On Reading History</title>
-        <description>&lt;p&gt;I finished reading &lt;em&gt;The Invisible Bridge: The Fall of Nixon and Rise of Reagan&lt;/em&gt; by Rick Pearlstein a few weeks ago. It was an exceptionally partisan and generally untrustworthy account of recent history, but it contains an interesting throughline. To hear him tell it, once upon a time (in that great righteous WW2 blah blah blah), we were all patriotic, and the Presidency of the United States of America meant something. We won a wholly morally justified war against the Nazis, and with it an American Peace. We were the greatest nation on Earth, and we knew it. Then came Vietnam, and Watergate, and our dreams came tumbling down. Nixon was a monster and a criminal, and Americans didn’t believe in America anymore. The book goes on to argue that Reagan went about pulling wool back over American’s eyes, and that he postponed a still pending American “growing up”.&lt;/p&gt;
-
-&lt;p&gt;Full disclosure: I vote Democratic. Even so, it’s hard to trust a book that leans so far left that it talks about Senate subcommitties being “larded by Republicans.” But the argument of the book aside, you often learn the most by examining the choice of “moral of the story” that history books are trying to validate, not their actual arguments, which come in the form of the main narrative. This book seems to be taking notice of a wave of cynicism in America (on this we agree). It would like us to assume with it that defeat in Vietnam was the inevitable fate for an irresonsible and immature superpower (probably also true). It would also like us to believe that a national “growing up” is possible only if Americans become more cynical (more dubious). I’m not completely sure about any of those claims, but aren’t they terribly interesting? Much more so than a discussion of Reagan’s early years as a lifeguard and radio announcer, which occupy a bulk of the pages.&lt;/p&gt;
-
-&lt;p&gt;Cheers,
-Keenon&lt;/p&gt;
-</description>
-        <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
-        <link>http://keenon.github.io/culture/2014/12/10/reading-history.html</link>
-        <guid isPermaLink="true">http://keenon.github.io/culture/2014/12/10/reading-history.html</guid>
-        
-        
-        <category>culture</category>
-        
-      </item>
-    
-      <item>
-        <title>America&#39;s Villain Complex</title>
+        <title>America's Villain Complex</title>
         <description>&lt;p&gt;SPOILER ALERT: If you haven’t watched Season 1 of Game of Thrones, there’s a fairly substantial spoiler in here&lt;/p&gt;
 
 &lt;p&gt;There are two TV shows I’d recommend you see: &lt;em&gt;Game of Thrones&lt;/em&gt;, and &lt;em&gt;House of Cards&lt;/em&gt;. If nothing else they say a lot about the American psyche.&lt;/p&gt;
