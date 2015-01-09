@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Real Valued Multi-Armed Bandits"
-date:   2014-12-10 23:05:34
+date:   2014-12-14 23:05:34
 categories: machine_learning
 ---
 Optimizing a modern digital product is complicated, labor intensive, and riddled with traps. The current state of the industry (though by no means state-of-the-art) is to use A/B testing to optimize websites. This involves getting a designer to make several different versions of something you'd like to optimize (say, a landing page), and then presenting each option to a randomly selected subset of the traffic to your site. By measuring visitors' behavior on each of the versions, you can pick the one that maximizes profit for your business. The leader in the space has [a great explanation of A/B testing](https://www.optimizely.com/ab-testing/), if you want more detail.
