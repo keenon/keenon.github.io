@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>America's Villain Complex</title>
+    <title>The 1 Big Thing Java Programmers Should Learn From Haskell Programmers</title>
     <meta name="description" content="Keenon Werling rants about things, and leaves it on the Internet
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://keenon.github.io/culture/2014/12/10/good-and-evil.html">
+    <link rel="canonical" href="http://keenon.github.io/opensource/2015/01/13/quickcheck.html">
 </head>
 
 
@@ -57,27 +57,23 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">America's Villain Complex</h1>
-    <p class="post-meta">Dec 10, 2014</p>
+    <h1 class="post-title">The 1 Big Thing Java Programmers Should Learn From Haskell Programmers</h1>
+    <p class="post-meta">Jan 13, 2015</p>
     <script type="text/javascript"
   		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 	</script>
   </header>
 
   <article class="post-content">
-    <p>SPOILER ALERT: If you haven’t watched Season 1 of Game of Thrones, there’s a fairly substantial spoiler in here</p>
+    <p><img src="https://www.haskell.org/wikiupload/4/4a/HaskellLogoStyPreview-1.png" alt="haskell logo" /></p>
 
-<p>There are two TV shows I’d recommend you see: <em>Game of Thrones</em>, and <em>House of Cards</em>. If nothing else they say a lot about the American psyche.</p>
+<p>Haskell is an amazing language, and I’m sure I’ll get hate mail from my Haskellphile friends John and Gabor for saying this, but there’s only one thing that Java people should steal from Haskell people to completely replace current standard practice. It’s not strict shunning of shared state, giant Unix beards, or even laziness (the computational kind, not the human kind). Those are all great things about functional programming, but Java has its reasons for not applying them all the time. The thing Java programmers should be using every day is Quickcheck!</p>
 
-<p>In both shows (which are both smash-hit successes), protaganists with hopelessly skewed moral complexes get what they want (which is always Power, with a capital P) by manipulating, lying, and cheating. We call this “realism,” and we love it. When a character in Game of Thrones flippantly says “Lord Stark was an honorable man, and Lord Stark died,” all of us watching at home nod in agreement. This is reality, we say. It’s nasty, people cheat to get what they want, and if you want to get ahead, you have to play dirty. If you’re too honorable and kind, you’ll never make it.</p>
+<p>Quickcheck has a Java port that’s compatible with JUnit! It’s <a href="https://github.com/pholser/junit-quickcheck">on Github</a>. I now use this for everything :)</p>
 
-<p><img src="https://i.chzbgr.com/maxW500/7642998272/hEA77CF0F/" alt="picture" /></p>
+<p>Quickcheck (<a href="http://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf">original paper</a>) is this awesome idea that seems completely obvious in a functional environment like Haskell. Instead of writing a unit test, where you run code through a very specific set of inputs and expect a specific set of outputs, you take a function through an <em>automatically generated</em> set of inputs and <em>enforce invariants</em> in the function output. That’s completely genius.</p>
 
-<p>Pay special attention to that last sentence. If you didn’t make it, maybe it’s because you <em>were too honorable and kind.</em> The hyper-cynical world-view we love to watch on TV has a strangely comforting upshot: those who lose in competition with others are endowed with moral virtue. It’s an ingenious way to reconcile the tautological fact that only 1% of the population can be in the top 1%, and Walt Disney telling you that you can be anything you want to be. Maybe that 1% are a bunch of sons-of-bitches, and the rest of us 99% are really just honorable souls who could’ve made it to the top, but would rather be kind to people.</p>
-
-<p>There may be some truth to it, and it certainly does comfort many, but I’m uncomfortable with the conclusions that really ambitious kids draw from this ethic that’s floating around.</p>
-
-<p><em>You don’t have to be a Sadist to get ahead.</em> In fact, people won’t work with a back-stabber, and if nobody will work with you, you’ll never take over Poland, no matter how hard you try. Don’t let me ruin your enjoyment, but take your TV with a grain of salt. It’s just a darker kind of Fairy Tale, and no less fanciful for being more brutal.</p>
+<p>This has a bunch of benefits, and I won’t hash them all out here. Just to get you thinking though, a unit test is only as devious as your imagination. It tends to miss nasty edge cases you didn’t think of in your code, because, had you thought of them, you’d have also written them into the test. Passing a battery of unit tests doesn’t say much. Passing a battery of tests that use thousands of randomly generated inputs to hammer on your code, and knowing that for every single one of those inputs your code performed flawlessly really builds trust. Basically, it’s an undisputed fact that more robust testing is better if it doesn’t take orders of magnitude longer to write, and the <a href="https://github.com/pholser/junit-quickcheck">JUnit Quickcheck port</a> fits that bill. Use it!</p>
 
 <p>Cheers,
 Keenon</p>
