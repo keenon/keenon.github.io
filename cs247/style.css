@@ -1,0 +1,34 @@
+.scrollbox {
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: block;
+}
+
+.textisland {
+	text-align: center;
+	color: #333;
+}
+
+.textisland b {
+	color: #000;
+}
+
+.textisland hr {
+	clear: both;
+	margin: 20px;
+	opacity: 0.1;
+	border-color: black;
+}
+
+.pedestal {
+	margin-top: 10px;
+}
+
+a {
+	color: #00537A;
+}
+
+a:hover {
+	color: #003046;
+}
