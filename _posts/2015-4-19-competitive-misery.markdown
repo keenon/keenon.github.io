@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Competitive misery"
+title:  "The Degeneracy of Competitive Systems"
 date:   2015-4-19 11:53:34
 categories: thoughts
 ---
