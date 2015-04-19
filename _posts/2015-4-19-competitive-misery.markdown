@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Degeneracy of Competitive Systems"
+title:  "Degenerate Competitive Systems"
 date:   2015-4-19 11:53:34
 categories: thoughts
 ---
