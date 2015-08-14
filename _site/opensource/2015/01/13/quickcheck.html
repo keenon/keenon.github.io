@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>The 1 Big Thing Java Programmers Should Learn From Haskell Programmers</title>
+    <title>Better Testing for Bulletproof Software</title>
     <meta name="description" content="Keenon Werling rants about things, and leaves it on the Internet
 ">
 
@@ -44,10 +44,6 @@
         
           
         
-          
-          <a class="page-link" href="/wip-post.html">Bushido and Startups</a>
-          
-        
       </div>
     </nav>
 
@@ -61,7 +57,7 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">The 1 Big Thing Java Programmers Should Learn From Haskell Programmers</h1>
+    <h1 class="post-title">Better Testing for Bulletproof Software</h1>
     <p class="post-meta">Jan 13, 2015</p>
     <script type="text/javascript"
   		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -69,15 +65,28 @@
   </header>
 
   <article class="post-content">
-    <p><img src="https://www.haskell.org/wikiupload/4/4a/HaskellLogoStyPreview-1.png" alt="haskell logo" /></p>
+    <p>TLDR: Quickcheck has a Java port that’s compatible with JUnit! It’s <a href="https://github.com/pholser/junit-quickcheck">on Github</a>. I now use this for everything :)</p>
 
-<p>Haskell is an amazing language, and I’m sure I’ll get hate mail from my Haskellphile friends John and Gabor for saying this, but there’s only one thing that Java people should steal from Haskell people to completely replace current standard practice. It’s not strict shunning of shared state, giant Unix beards, or even laziness (the computational kind, not the human kind). Those are all great things about functional programming, but Java has its reasons for not applying them all the time. The thing Java programmers should be using every day is Quickcheck!</p>
+<p>In research, we often report results from the outputs of fundamentally broken, overgrown, duct-tape programs written in some typeless language with a few half hearted unit tests, if any. By informal estimates from around the lab, we seem to believe we tend to lose between 2 and 5 percent output accuracy to completely preventable bugs, unrelated to the science we’re trying to prove about approaches. Those are huge numbers, and require radical changes to our testing habits to fix.</p>
 
-<p>Quickcheck has a Java port that’s compatible with JUnit! It’s <a href="https://github.com/pholser/junit-quickcheck">on Github</a>. I now use this for everything :)</p>
+<p>Hackers (the breaking and entering kind, not the warm and fuzzy variety) are in the actual business of bug finding. Unlike the rest of us, who are in the business of bug creation, these professionals have tools that actually work for bug discovery. They have one technique in particular that I (until recently) had cause to envy, called ‘fuzzing’. Fuzzing works something like this: When faced with a new system that needs to be broken into, a black hat will write a script to pass random inputs to the system, and then she will run her script until the system crashes and she gets a stack trace. She then pokes around in the vicinity of the stack trace frames until she find a buffer whose bounds aren’t being checked, and then (I’m simplifying here) after a little copy paste from the famous <a href="http://phrack.org/issues/49/14.html">aleph1</a>, it’s off to <a href="https://www.torproject.org/projects/torbrowser.html.en">Tor</a> to find the highest bidder for her new <a href="https://en.wikipedia.org/wiki/Zero-day_(computing)">0 day</a>.</p>
 
-<p>Quickcheck (<a href="http://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf">original paper</a>) is this awesome idea that seems completely obvious in a functional environment like Haskell. Instead of writing a unit test, where you run code through a very specific set of inputs and expect a specific set of outputs, you take a function through an <em>automatically generated</em> set of inputs and <em>enforce invariants</em> in the function output. That’s completely genius.</p>
+<p>It’s only recently that we bug creators have started to catch up with our own (more powerful) variant of fuzzing tools. Quickcheck (<a href="http://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf">original paper</a>) is a testing system that can be best explained as fuzz testing on crack, and for the good guys. The basic idea here is to write generators of random inputs, and a functional way to validate outputs are correct, and then let you test suite do the hard work of thinking up all the edge cases you forgot about. This is great, because you will get stack frames and inputs when the system finds a bug that crashes your system, but you’ll also get real confidence that your system produces outputs that conform to all sorts of functional invariants.</p>
 
-<p>This has a bunch of benefits, and I won’t hash them all out here. Just to get you thinking though, a unit test is only as devious as your imagination. It tends to miss nasty edge cases you didn’t think of in your code, because, had you thought of them, you’d have also written them into the test. Passing a battery of unit tests doesn’t say much. Passing a battery of tests that use thousands of randomly generated inputs to hammer on your code, and knowing that for every single one of those inputs your code performed flawlessly really builds trust. Basically, it’s an undisputed fact that more robust testing is better if it doesn’t take orders of magnitude longer to write, and the <a href="https://github.com/pholser/junit-quickcheck">JUnit Quickcheck port</a> fits that bill. Use it!</p>
+<p>The original Quickcheck was written for Haskell, but in practice real people don’t use functional languages much. There is a <a href="https://github.com/pholser/junit-quickcheck">JUnit Quickcheck port</a> for the rest of us, and it’s what I recommend if you’re a Java person.</p>
+
+<p>Assuming you’re with me on the rough desirability of functional, randomly generated tests, then there’s one more problem that needs careful thought: don’t we have a chicken and egg problem here in terms of validating inputs? If we need to be able to tell if our program’s output is correct for any random input in order to write these tests, don’t the tests need as much functionality as the underlying program, thus needing tests themselves? What if your test and program have the same bug? Is it turtles all the way down?</p>
+
+<p>Here’s some guidelines I’ve developed to help me through these issues, and build confidence in my functional tests:</p>
+
+<ul>
+  <li>Use different algorithms for the test validity check and the program being tested, so the intersection of the possible bugs is a smaller space</li>
+  <li>Also write asserts for output invariants that don’t have to do with getting exactly the right answer, but that reduce the space of possible bugs even further</li>
+  <li>Use the slower (even intractible exhaustive enumeration) algorithm for the test, because those algorithms tend to be obviously correct by just reading. Then you can restrict that test to tractably small inputs, and be sure the answers are right for those inputs.</li>
+  <li>If you can generate the right answer along with the input somehow, always do that, rather than calculate in the test. This is rarely possible though.</li>
+</ul>
+
+<p>I’d like to hear everyone else’s thoughts about functional testing, and testing in general. How do you verify correctness? When do you write tests? How many tests do you need to feel confident? When do you decide to skip testing all together?</p>
 
 <p>Cheers,
 Keenon</p>

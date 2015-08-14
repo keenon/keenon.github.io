@@ -6,21 +6,57 @@
 </description>
     <link>http://keenon.github.io/</link>
     <atom:link href="http://keenon.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 26 Jan 2015 13:58:58 -0800</pubDate>
-    <lastBuildDate>Mon, 26 Jan 2015 13:58:58 -0800</lastBuildDate>
+    <pubDate>Fri, 14 Aug 2015 14:27:53 -0700</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 14:27:53 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>The 1 Big Thing Java Programmers Should Learn From Haskell Programmers</title>
-        <description>&lt;p&gt;&lt;img src=&quot;https://www.haskell.org/wikiupload/4/4a/HaskellLogoStyPreview-1.png&quot; alt=&quot;haskell logo&quot; /&gt;&lt;/p&gt;
+        <title>The &#39;&#39;Cooperative Science&#39;&#39; Paradox</title>
+        <description>&lt;p&gt;Imagine a tribe of hunter-gatherers living in the Great Plains of the American midwest, around year 1700. Buffallo are plentiful, and are the tribe’s primary source of food. A small number of tribe members manage the huts and everyday administration of the tribe, but the majority of the tribe’s members are hunters. Upon killing a buffallo, the individual responsible for throwing the spear that killed the buffallo is given tremendous glory, access to the best hut, and first pick on buffallo meat.&lt;/p&gt;
 
-&lt;p&gt;Haskell is an amazing language, and I’m sure I’ll get hate mail from my Haskellphile friends John and Gabor for saying this, but there’s only one thing that Java people should steal from Haskell people to completely replace current standard practice. It’s not strict shunning of shared state, giant Unix beards, or even laziness (the computational kind, not the human kind). Those are all great things about functional programming, but Java has its reasons for not applying them all the time. The thing Java programmers should be using every day is Quickcheck!&lt;/p&gt;
+&lt;p&gt;In this tribe, hunters work alone, because the credits for buffallo-kill-assists are marginal at best. An assist, while helping the tribe overall, will yield the individual no hut, and hardly any glory. The chieftan of the tribe doesn’t know where fat buffallo may be hiding, and so she sends hunters off in every direction, to hedge against the failure of any one hunting expedition. If all the hunting expeditions fail for too many weeks in a row, stores will run low, and the tribe will starve.&lt;/p&gt;
 
-&lt;p&gt;Quickcheck has a Java port that’s compatible with JUnit! It’s &lt;a href=&quot;https://github.com/pholser/junit-quickcheck&quot;&gt;on Github&lt;/a&gt;. I now use this for everything :)&lt;/p&gt;
+&lt;p&gt;Substitue buffallo for papers, and we’ve got a reasonably accurate view of the academic working group in computer science.&lt;/p&gt;
 
-&lt;p&gt;Quickcheck (&lt;a href=&quot;http://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf&quot;&gt;original paper&lt;/a&gt;) is this awesome idea that seems completely obvious in a functional environment like Haskell. Instead of writing a unit test, where you run code through a very specific set of inputs and expect a specific set of outputs, you take a function through an &lt;em&gt;automatically generated&lt;/em&gt; set of inputs and &lt;em&gt;enforce invariants&lt;/em&gt; in the function output. That’s completely genius.&lt;/p&gt;
+&lt;p&gt;There’s a reason I chose such a primitive social structure to compare a lab to. I think we’re missing a fundamental cooperative “technology” to allow fruitful academic cooperation across individuals in order to tackle large scientific problems, and it’s within reach. In order to get there, though, we need to first understand where we are.&lt;/p&gt;
 
-&lt;p&gt;This has a bunch of benefits, and I won’t hash them all out here. Just to get you thinking though, a unit test is only as devious as your imagination. It tends to miss nasty edge cases you didn’t think of in your code, because, had you thought of them, you’d have also written them into the test. Passing a battery of unit tests doesn’t say much. Passing a battery of tests that use thousands of randomly generated inputs to hammer on your code, and knowing that for every single one of those inputs your code performed flawlessly really builds trust. Basically, it’s an undisputed fact that more robust testing is better if it doesn’t take orders of magnitude longer to write, and the &lt;a href=&quot;https://github.com/pholser/junit-quickcheck&quot;&gt;JUnit Quickcheck port&lt;/a&gt; fits that bill. Use it!&lt;/p&gt;
+&lt;p&gt;Incentives in academia:&lt;/p&gt;
+
+&lt;p&gt;It’s easy to see why the incentives for all the individuals in this scenario make it a stable point. A chieftan who moves all of the hunters into cooperating on a single hunt has trouble deciding how to allocate limited quality huts to a large successful group, and runs the risk of failure of all hunters during an expedition. It’s much safer to hedge and disperse. It also doesn’t make sense for hunters to unilaterally cooperate, except under very limited circumstances, because the gains from coopration are unclear and the rewards are given to a single individual.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 14 Aug 2015 16:05:34 -0700</pubDate>
+        <link>http://keenon.github.io/science/2015/08/14/teamwork.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/science/2015/08/14/teamwork.html</guid>
+        
+        
+        <category>science</category>
+        
+      </item>
+    
+      <item>
+        <title>Better Testing for Bulletproof Software</title>
+        <description>&lt;p&gt;TLDR: Quickcheck has a Java port that’s compatible with JUnit! It’s &lt;a href=&quot;https://github.com/pholser/junit-quickcheck&quot;&gt;on Github&lt;/a&gt;. I now use this for everything :)&lt;/p&gt;
+
+&lt;p&gt;In research, we often report results from the outputs of fundamentally broken, overgrown, duct-tape programs written in some typeless language with a few half hearted unit tests, if any. By informal estimates from around the lab, we seem to believe we tend to lose between 2 and 5 percent output accuracy to completely preventable bugs, unrelated to the science we’re trying to prove about approaches. Those are huge numbers, and require radical changes to our testing habits to fix.&lt;/p&gt;
+
+&lt;p&gt;Hackers (the breaking and entering kind, not the warm and fuzzy variety) are in the actual business of bug finding. Unlike the rest of us, who are in the business of bug creation, these professionals have tools that actually work for bug discovery. They have one technique in particular that I (until recently) had cause to envy, called ‘fuzzing’. Fuzzing works something like this: When faced with a new system that needs to be broken into, a black hat will write a script to pass random inputs to the system, and then she will run her script until the system crashes and she gets a stack trace. She then pokes around in the vicinity of the stack trace frames until she find a buffer whose bounds aren’t being checked, and then (I’m simplifying here) after a little copy paste from the famous &lt;a href=&quot;http://phrack.org/issues/49/14.html&quot;&gt;aleph1&lt;/a&gt;, it’s off to &lt;a href=&quot;https://www.torproject.org/projects/torbrowser.html.en&quot;&gt;Tor&lt;/a&gt; to find the highest bidder for her new &lt;a href=&quot;https://en.wikipedia.org/wiki/Zero-day_(computing)&quot;&gt;0 day&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It’s only recently that we bug creators have started to catch up with our own (more powerful) variant of fuzzing tools. Quickcheck (&lt;a href=&quot;http://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf&quot;&gt;original paper&lt;/a&gt;) is a testing system that can be best explained as fuzz testing on crack, and for the good guys. The basic idea here is to write generators of random inputs, and a functional way to validate outputs are correct, and then let you test suite do the hard work of thinking up all the edge cases you forgot about. This is great, because you will get stack frames and inputs when the system finds a bug that crashes your system, but you’ll also get real confidence that your system produces outputs that conform to all sorts of functional invariants.&lt;/p&gt;
+
+&lt;p&gt;The original Quickcheck was written for Haskell, but in practice real people don’t use functional languages much. There is a &lt;a href=&quot;https://github.com/pholser/junit-quickcheck&quot;&gt;JUnit Quickcheck port&lt;/a&gt; for the rest of us, and it’s what I recommend if you’re a Java person.&lt;/p&gt;
+
+&lt;p&gt;Assuming you’re with me on the rough desirability of functional, randomly generated tests, then there’s one more problem that needs careful thought: don’t we have a chicken and egg problem here in terms of validating inputs? If we need to be able to tell if our program’s output is correct for any random input in order to write these tests, don’t the tests need as much functionality as the underlying program, thus needing tests themselves? What if your test and program have the same bug? Is it turtles all the way down?&lt;/p&gt;
+
+&lt;p&gt;Here’s some guidelines I’ve developed to help me through these issues, and build confidence in my functional tests:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use different algorithms for the test validity check and the program being tested, so the intersection of the possible bugs is a smaller space&lt;/li&gt;
+  &lt;li&gt;Also write asserts for output invariants that don’t have to do with getting exactly the right answer, but that reduce the space of possible bugs even further&lt;/li&gt;
+  &lt;li&gt;Use the slower (even intractible exhaustive enumeration) algorithm for the test, because those algorithms tend to be obviously correct by just reading. Then you can restrict that test to tractably small inputs, and be sure the answers are right for those inputs.&lt;/li&gt;
+  &lt;li&gt;If you can generate the right answer along with the input somehow, always do that, rather than calculate in the test. This is rarely possible though.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I’d like to hear everyone else’s thoughts about functional testing, and testing in general. How do you verify correctness? When do you write tests? How many tests do you need to feel confident? When do you decide to skip testing all together?&lt;/p&gt;
 
 &lt;p&gt;Cheers,
 Keenon&lt;/p&gt;
@@ -35,279 +71,26 @@ Keenon&lt;/p&gt;
       </item>
     
       <item>
-        <title>MinimalML: The Minifesto</title>
-        <description>&lt;p&gt;What’s the most important resource in Machine Learning research? It isn’t compute power, office space, or white boards. It’s &lt;em&gt;time&lt;/em&gt;. Anything we can do to use it more effectively translates directly into better results. Basically, we want to &lt;em&gt;optimize research&lt;/em&gt;, and that’s what this post will be all about.&lt;/p&gt;
-
-&lt;p&gt;In any computer science curriculum, they’ll teach you what to do if something is taking too long.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Double check that this isn’t &lt;a href=&quot;http://en.wikipedia.org/wiki/Program_optimization&quot;&gt;premature optimization&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Measure where your bottlenecks are&lt;/li&gt;
-  &lt;li&gt;Exterminate them with maximum prejudice&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;With &lt;a href=&quot;http://github.com/keenon/minimalml&quot;&gt;MinimalML&lt;/a&gt;, the library I’m opensourcing today (in very early alpha, with no docs yet), I’ve set out to implement tools in software that optimize ML research. Although ML research is software heavy, it is fundamentally a human operation, so the analogy to optimization is stretched at places. With that in mind, let’s go through the optimization checklist together.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1: Be mature, then optimize&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://rs2img.memecdn.com/maturity-test_o_932609.webp&quot; alt=&quot;meme&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I wrote a post about good research discipline a few weeks ago, &lt;a href=&quot;/science/2014/12/10/unsolved-problem.html&quot;&gt;The “Unsolved Problem” Problem&lt;/a&gt;. In summary, I’ve experienced two kinds of research methodologies: The “Undisciplined Method”, and the “Scientific Method.” Far more frequently, the “Undisciplined Method” reigns. When confronted with a new problem, we think about our problem for half a day, whiteboard a few potential solutions, and then spend weeks building the sexiest thing we came up with. We then inevitably (well, 95% of the time) discover the sexy solution underperforms the baseline, and we have insufficient tools to understand why. For the full rant, see &lt;a href=&quot;/science/2014/12/10/unsolved-problem.html&quot;&gt;the original post&lt;/a&gt;. Any research pipeline should optimize the Scientific Method.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;2: Find bottlenecks&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://patsylynnforg.files.wordpress.com/2012/09/bottlenecklogo1.jpg&quot; alt=&quot;meme&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It’s easier to analyze research if you have an algorithm for it. In the spirit of mature optimization, we’ll optimize the correct algorithm: the Scientific Method.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Form a hypothesis (usually, this means write down new features to try)&lt;/li&gt;
-  &lt;li&gt;Write code to test the hypothesis&lt;/li&gt;
-  &lt;li&gt;Write code to analyze the test results&lt;/li&gt;
-  &lt;li&gt;Run the code&lt;/li&gt;
-  &lt;li&gt;Stare at the output until understanding is reached, helped by any automatic analysis tools&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Depending on your situation, any of these steps could be the bottleneck. That said, it’s pretty easy to list why each step might take too long:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Hypothesis formation is slow if you don’t have a good understanding of the data&lt;/li&gt;
-  &lt;li&gt;Code writing is slow if you have to build from scratch&lt;/li&gt;
-  &lt;li&gt;Analysis writing is slow if you don’t recycle old analysis code&lt;/li&gt;
-  &lt;li&gt;Running is slow if you’re not optimized&lt;/li&gt;
-  &lt;li&gt;Output analysis is slow if you don’t have good analysis tools&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;So MinimalML will attempt to address each of these in turn.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3: Crush bottlenecks like small insects&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://images5.fanpop.com/image/photos/30900000/terminator-terminator-30973001-1280-1024.jpg&quot; alt=&quot;meme&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here’s the key idea behind all of MinimalML: All you ever &lt;em&gt;needed&lt;/em&gt; for your ML research was logistic regression and a polynomial kernel. It would be nice if it ran also really fast (and/or on a cluster), had an elegant and easy way to express features and kernels, and came with a growing suite of kick-ass error analysis tools.&lt;/p&gt;
-
-&lt;p&gt;By only doing one thing (the above, arguably the “minimum”), and doing it very carefully in order to optimize &lt;em&gt;time&lt;/em&gt;, I think I’ve created something that will speed up your research process considerably. Here it is &lt;a href=&quot;http://github.com/keenon/minimalml&quot;&gt;on Github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let’s go through MinimalML’s solution to each of the possible bottlenecks in the Scientific Method, one by one:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Hypothesis formation is fast because you have excellent error analysis tools automatically bundled&lt;/li&gt;
-  &lt;li&gt;Code writing is fast, all you do is subclass Experiment and override its abstract configurations by adding feature extractors as anonymous methods, specifying where to find the data, configuring the kernel, and setting a couple of other computation-related parameters.&lt;/li&gt;
-  &lt;li&gt;Analysis writing takes no time at all, because it’s automatically bundled by subclassing Experiment&lt;/li&gt;
-  &lt;li&gt;MinimalML has been very carefully optimized. For example, MinimalML uses a novel Sparse/Dense concatenated vector datastructure that allows super fast inner products (the primary op in linear classifiers), super fast construction, and has a small memory footprint. It’s also been written to take advantage of Spark clusters for training, though you need a very large dataset to see a latency win from using Spark.&lt;/li&gt;
-  &lt;li&gt;Output analysis is fast and easy because MinimalML bundles a suite of analysis tools (making liberal use of GNUPlot) with each Experiment automatically, making diagnosing the source of low scores a breeze.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;In defense of linear classifiers&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I know that only using linear classifiers seems like an unsexy idea, so let me defend it. First of all, MinimalML is intended to be used early in the research process, primarily for feature engineering in cases where features can conceivably be written by hand (think NLP, not vision). Non-linear classifiers are only slightly less dependant on feature selection than linear classifiers. Even an 8 layer neural net with 1000 hidden units per layer is still only able to predict based on inputs you provide. If those inputs are too rich, no amount of dropout will save you from not having enough training data (if you’re Google, good for you, this doesn’t apply to you). On the other hand, if those inputs don’t carry enough information, even a real human being won’t be able to figure it out, let alone your fancy neural net. So feature selection is important.&lt;/p&gt;
-
-&lt;p&gt;The advantages of only supporting linear classifiers over non-linear are that&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Linear classifiers can be trained and tested absurdly quickly (speeds up Step 4)&lt;/li&gt;
-  &lt;li&gt;Linear classifiers are very easy to explain and analyze (makes Step 5 much better + faster)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Final Thoughts&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;There are a few great research ML suites out there, which are &lt;em&gt;way better&lt;/em&gt; than MinimalML at almost everything. CoreNLP and Weka come to mind. I have no intention of replacing them. Instead, I want a small, simple, outrageously fast system that makes it easy to do real science quickly. Before you publish, and after you have a good handle on what kinds of features you’ll need and where you can justify complexity in your model, you’ll still want to turn to one of these packages to beef up your classifier. In the beginning of the research process, however, I think MinimalML will come to stand out as an excellent approach to quickly get a good handle on your problem.&lt;/p&gt;
-
-&lt;p&gt;MinimalML is in super early alpha as of this writing, and as yet I haven’t written any documentation. I’ll post here again when it’s in a more usable state, but for now, consider this a heads up that “something good this way comes” :)&lt;/p&gt;
-
-&lt;p&gt;Cheers,
-Keenon&lt;/p&gt;
-</description>
-        <pubDate>Fri, 09 Jan 2015 03:53:34 -0800</pubDate>
-        <link>http://keenon.github.io/opensource/2015/01/09/minifesto.html</link>
-        <guid isPermaLink="true">http://keenon.github.io/opensource/2015/01/09/minifesto.html</guid>
-        
-        
-        <category>opensource</category>
-        
-      </item>
-    
-      <item>
-        <title>Real Valued Multi-Armed Bandits</title>
-        <description>&lt;p&gt;Optimizing a modern digital product is complicated, labor intensive, and riddled with traps. The current state of the industry (though by no means state-of-the-art) is to use A/B testing to optimize websites. This involves getting a designer to make several different versions of something you’d like to optimize (say, a landing page), and then presenting each option to a randomly selected subset of the traffic to your site. By measuring visitors’ behavior on each of the versions, you can pick the one that maximizes profit for your business. The leader in the space has &lt;a href=&quot;https://www.optimizely.com/ab-testing/&quot;&gt;a great explanation of A/B testing&lt;/a&gt;, if you want more detail.&lt;/p&gt;
-
-&lt;p&gt;The trouble is, A/B testing is hopelessly limited. You have to specify all your experiments in advance, and A/B testing can only be expected to pick the best among those options. It can’t point out a new option that you didn’t think of, which is better than anything you thought to try. In mathematical terms, my gripe with A/B testing is that it’s over &lt;em&gt;discrete space&lt;/em&gt;, and a very small discrete space at that.&lt;/p&gt;
-
-&lt;p&gt;A better way wouldn’t require you to create options in advance. It would search over a whole enormous (potentially infinte) number of possible configurations, and pick the best one for you automatically. A pundit might call this “AI Creativity,” or “Machine Artwork,” but that would be an abuse of the terms “creativity” and “art.” Really, it’s all just automating trial and error, and a bit of tricky mathematics.&lt;/p&gt;
-
-&lt;p&gt;On a small team, Amy Bearman, Bhaven Patel, and I (all Juniors at Stanford), cooked up a way to have a machine design the optimial digital business for you. The rest of this article is laying out what we did, hopefully in fairly understandable terms.&lt;/p&gt;
-
-&lt;p&gt;Like all Machine Learning systems, this isn’t completely magic (just mostly). In order to use our system, you need to specify a set of things that the algorithm can change, in terms of numbers. For instance, you could let the system pick a font size for your landing page call to action. If you want the system to pick a color, you need to give the system 3 real values (red, green, and blue) to search over. In theory, you can give the system an unlimited number of parameters to search over, and with enough traffic it should work. In practice, the fewer parameters you give the system, the better a job it will do of jointly optimizing them.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The Proof In The Pudding&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Before we dive into math, graphs are always helpful. Below, there are 2 graphs. On both, I’ve used the same axis. The X and Y (the non-height axis) represent two features of your website you’re trying to optimize. For concreteness let’s say these axis represent the size of the call to action font, and darkness of the background, but in principle they could be any parameter that can be mapped by a number. The Z (height) at any combination of feature values (X and Y coordinates) represent the &lt;a href=&quot;http://en.wikipedia.org/wiki/Expected_value&quot;&gt;expected value&lt;/a&gt; at that combination. This is a measure from statistics representing the long run average amount of money we make per user, if we had a very large number of users visit the website.&lt;/p&gt;
-
-&lt;p&gt;In order to test the math and theory that follows, we ran an experiment with a virtual population, because we didn’t have access to a website with a large flow of users (if you &lt;em&gt;have&lt;/em&gt; access to a large website, and feel like doing some science, feel free to get in touch). The following graph represents the preferences of our virtual population. We &lt;em&gt;made up this function&lt;/em&gt;, it has no bearing on reality. With a setting of “feature 1” at 2.0, and “feature 2” at 2.0, we have an expected value of $1.00 per user on average. With “feature 1” at 2.0, and “feature 2” at -2.0, we expect to lose an average of $1.00 per user (maybe this represents acquisition cost).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/bandit/figure_2.png&quot; alt=&quot;Golden user preferences&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;There’s a key point to grasp here. If we knew the true population preferences, we could optimize by finding the highest point on that graph. This is a tricky mathematical problem, but solvable (as we show below). The trouble is, our learning algorithm doesn’t know this in advance. In fact, our learning algorithm has no idea how users will respond to different settings of the parameters, a priori. We have to learn that through trial and error.&lt;/p&gt;
-
-&lt;p&gt;Below is a graph of what the algorithm thinks about the population preferences, after only 30 virtual users visiting the site. Notice how amazingly close the algorithm’s guess about the virtual user preferences is to the true preferences. For now, ignore the lines on the plot. Those are charting how the computer can find the maximum value of the function, which we explain at length in the next section.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/bandit/figure_3.png&quot; alt=&quot;Learned user preferences&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The Gory Mathematical Details&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We assume that there are a finite and known set of transitions that the user can take, each of which has a known and constant expected value. We assume that the user will behave stochastically. We also assume there exists some function that consistently maps the values of the parameters to the probability that the user will take a given action (click on a certain link), although the algorithm doesn’t know it. The analogy to the multi-armed bandit is loose, because the multi-armed bandit problem is about choosing from a number of discrete choices to maximize payout (unknown random payout distribution on each lever). In our casting of the problem, there are a number of known possible outcomes, each with known payout, but the function mapping some setting of real parameters to the probability of each outcome happing is unknown a priori. We draw the analogy anyways, because there is a conscious tradeoff between exploration and exploitation, and we borrow the simplest of the multi-armed bandit solutions: &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;-greedy. This means with a probability &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; we choose a parameter setting at random, in order to learn about user behavior, and with probability &lt;script type=&quot;math/tex&quot;&gt;1-\epsilon&lt;/script&gt; we maximize our expected value.&lt;/p&gt;
-
-&lt;p&gt;We approximate that function mapping parameter settings to user choice probabilities (and consequently expected value) with a set of SVMs, each responsible for mapping the probability that a single action is taken. We leave one SVM per choice. The probability of a choice &lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt; given a paremeter setting &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; is:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-P(i,x) = \frac{P_i(x)}{\sum{j = 1}^n P_j(x)}
-&lt;/script&gt;
-
-&lt;p&gt;If we pull apart the guts of the SVM, and remove the irritating normalization term, we have that &lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-f(x) \propto \sum_{i = 1}^m a_iy_iK(x_i,x) + b
-&lt;/script&gt;
-
-&lt;p&gt;We have a set of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; children, where child &lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt; has expected value &lt;script type=&quot;math/tex&quot;&gt;E_i&lt;/script&gt;. We are interested in our expected value, given a choice of &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;, representing the feature vector for creating a website.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-E(x) = \frac{\sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x) + b_i)}{\sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x) + b_i}
-&lt;/script&gt;
-
-&lt;p&gt;We wish to choose an &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; that maximizes our expected value under the model, given our evidence so far. This is non-convex, so we’d like a solution in closed form. Begin by taking the derivative&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-\frac{d}{dx}E(x) = \frac{d}{dx}\frac{\sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x) + b_i)}{\sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x) + b_i}
-&lt;/script&gt;
-
-&lt;p&gt;In order to fit the entire derivative on one line, let:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-d(x) = \sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x)
-&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-e(x) = \sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}K(x_j^{(i)},x))
-&lt;/script&gt;
-
-&lt;p&gt;Then by the quotient rule, we have&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-\frac{d}{dx}E(x) = \frac{d(x)\frac{d}{dx}e(x) - e(x)\frac{d}{dx}d(x)}{(d(x))^2}
-&lt;/script&gt;
-
-&lt;p&gt;Following convention, let’s choose the Guassian kernel as our kernel:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-K(y,x) = e^{-\frac{||x-y||^2}{2\sigma^2}}
-&lt;/script&gt;
-
-&lt;p&gt;We’ll need the derivative also. We use the fact: &lt;script type=&quot;math/tex&quot;&gt;
-||x-y||^2 = ||x||^2 - 2x^Ty + ||y||^2
-&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-\frac{d}{dx} K(y,x) = \frac{d}{dx} e^{-\frac{||x||^2 - 2x^Ty + ||y||^2}{2\sigma^2}}
-&lt;/script&gt;
-
-&lt;p&gt;Then we apply the chain rule and arrive at&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-\frac{d}{dx} K(y,x) = (e^{-\frac{||x||^2 - 2x^Ty + ||y||^2}{2\sigma^2}})*(\frac{y - x}{\sigma^2})
-&lt;/script&gt;
-
-&lt;p&gt;And simplifying:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-\frac{d}{dx} K(y,x) = e^{-\frac{||x-y||^2}{2\sigma^2}}(\frac{y - x}{\sigma^2})
-&lt;/script&gt;
-
-&lt;p&gt;Then we can substitute in and get our final derivative (written in pieces so it fits onto a sheet of paper):&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-d(x) = \sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}e^{-\frac{||x-x_j^{(i)}||^2}{2\sigma^2}}
-&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-\frac{d}{dx}d(x) = \sum_{i=1}^n\sum_{j=1}^m a_j^{(i)}y_j^{(i)}e^{-\frac{||x-x_j^{(i)}||^2}{2\sigma^2}}(\frac{x_j^{(i)} - x}{\sigma^2})
-&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-e(x) = \sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}e^{-\frac{||x-x_j^{(i)}||^2}{2\sigma^2}})
-&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-\frac{d}{dx}e(x) = \sum_{i=1}^nE_i(\sum_{j=1}^m a_j^{(i)}y_j^{(i)}e^{-\frac{||x-x_j^{(i)}||^2}{2\sigma^2}}(\frac{x_j^{(i)} - x}{\sigma^2}))
-&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;
-\frac{d}{dx}E(x) = \frac{d(x)\frac{d}{dx}e(x) - e(x)\frac{d}{dx}d(x)}{(d(x))^2}
-&lt;/script&gt;
-
-&lt;p&gt;Our expectation in &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; is non-concave and has many local optima. In practice, we use gradient descent with several restarts per problem to find the best value we can, with no optimality guarantees. Below is a graph of a gradient check on a toy dataset, with 6 potential user actions, each with a different expected value, resulting in 2 distinct (identical) peaks.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/bandit/figure_1.png&quot; alt=&quot;Gradient check for multi-armed bandit&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Cheers,
-Keenon&lt;/p&gt;
-</description>
-        <pubDate>Sun, 14 Dec 2014 15:05:34 -0800</pubDate>
-        <link>http://keenon.github.io/machine_learning/2014/12/14/real-valued-bandit.html</link>
-        <guid isPermaLink="true">http://keenon.github.io/machine_learning/2014/12/14/real-valued-bandit.html</guid>
-        
-        
-        <category>machine_learning</category>
-        
-      </item>
-    
-      <item>
-        <title>America&#39;s Villain Complex</title>
-        <description>&lt;p&gt;SPOILER ALERT: If you haven’t watched Season 1 of Game of Thrones, there’s a fairly substantial spoiler in here&lt;/p&gt;
-
-&lt;p&gt;There are two TV shows I’d recommend you see: &lt;em&gt;Game of Thrones&lt;/em&gt;, and &lt;em&gt;House of Cards&lt;/em&gt;. If nothing else they say a lot about the American psyche.&lt;/p&gt;
-
-&lt;p&gt;In both shows (which are both smash-hit successes), protaganists with hopelessly skewed moral complexes get what they want (which is always Power, with a capital P) by manipulating, lying, and cheating. We call this “realism,” and we love it. When a character in Game of Thrones flippantly says “Lord Stark was an honorable man, and Lord Stark died,” all of us watching at home nod in agreement. This is reality, we say. It’s nasty, people cheat to get what they want, and if you want to get ahead, you have to play dirty. If you’re too honorable and kind, you’ll never make it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.chzbgr.com/maxW500/7642998272/hEA77CF0F/&quot; alt=&quot;picture&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Pay special attention to that last sentence. If you didn’t make it, maybe it’s because you &lt;em&gt;were too honorable and kind.&lt;/em&gt; The hyper-cynical world-view we love to watch on TV has a strangely comforting upshot: those who lose in competition with others are endowed with moral virtue. It’s an ingenious way to reconcile the tautological fact that only 1% of the population can be in the top 1%, and Walt Disney telling you that you can be anything you want to be. Maybe that 1% are a bunch of sons-of-bitches, and the rest of us 99% are really just honorable souls who could’ve made it to the top, but would rather be kind to people.&lt;/p&gt;
-
-&lt;p&gt;There may be some truth to it, and it certainly does comfort many, but I’m uncomfortable with the conclusions that really ambitious kids draw from this ethic that’s floating around.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;You don’t have to be a Sadist to get ahead.&lt;/em&gt; In fact, people won’t work with a back-stabber, and if nobody will work with you, you’ll never take over Poland, no matter how hard you try. Don’t let me ruin your enjoyment, but take your TV with a grain of salt. It’s just a darker kind of Fairy Tale, and no less fanciful for being more brutal.&lt;/p&gt;
-
-&lt;p&gt;Cheers,
-Keenon&lt;/p&gt;
-</description>
-        <pubDate>Thu, 11 Dec 2014 15:05:34 -0800</pubDate>
-        <link>http://keenon.github.io/culture/2014/12/11/good-and-evil.html</link>
-        <guid isPermaLink="true">http://keenon.github.io/culture/2014/12/11/good-and-evil.html</guid>
-        
-        
-        <category>culture</category>
-        
-      </item>
-    
-      <item>
         <title>The &#39;&#39;Unsolved Problem&#39;&#39; Problem</title>
-        <description>&lt;p&gt;Suppose your life depends on solving a problem that nobody in the world knows how to solve. A natural (and modest) instinct might be to lose hope. After all, the world is a very large place, and if none of its 7.125 billion people have already solved this problem, it must be very hard indeed. Wouldn’t it be arrogant to assume you’d be the one to solve it?&lt;/p&gt;
+        <description>&lt;p&gt;Suppose your life depends on solving a problem that nobody in the world knows how to solve. Let’s make it concrete, and suppose that you’re about to get lung cancer from the pollution in Beijing, where you live and work as a bicycle messenger. You cannot afford a mask, yet you exercise and breathe heavily in the worst parts of down town Beijing for 12 hours a day, and the residue in your lungs is slowly building up to lethal levels. You cannot quit your job, because it is the best paid work available, and you family (who still live in the country side) are dependant on monthly payments you send home out of your paycheck. The problem you need to solve in a narrow sense is the too rapid approach of your death due to toxicity, and the effect your premature death would have on your family. In the grander sense, your problem is the smog in downtown Beijing, that has gotten so bad that you can’t see from one city block to the next.&lt;/p&gt;
 
-&lt;p&gt;Perhaps it is, just a little, but it’s a socially responsible kind of arrogance. If nobody was ever self-confident enough to think that maybe they’d be the one to crack the puzzle, we’d still be sitting in caves, telling our kids that it is only God who can make fire. It requires a certain swaggering confidence to forego easy, low-risk, low-impact happiness (hunting boar) in favor of hard work, long hours, and a small chance of making a real contribution (setting out to make fire).&lt;/p&gt;
+&lt;p&gt;A natural (and socially modest) instinct might be to lose hope. After all, the world is a very large place, and if none of its 7.125 billion people have already solved this problem, it must be very hard indeed. Why should you believe you’re special in any way? Assuming a uniform prior on a given person seleced at random from humanity being able to solve this problem, then the empirical odds (if you’re a Bayesian statistician) put it at 7.125 billion (+1) to 1 that you (an average human with access to today’s technology) can solve this problem. Wouldn’t it be arrogant to assume you’d be the one to solve it?&lt;/p&gt;
 
-&lt;p&gt;So suppose that you can screw up your courage to believe for the briefest of moments that you’ll be able to accomplish something where everyone else has failed. What can you do? The first instinct is to start trying things as they occur to you: Think about your problem for a bit, come up with something that seems like it might work, try it, and if it fails, give up until you have another idea, and then start back at the beginning.&lt;/p&gt;
+&lt;p&gt;Perhaps it is, just a little, but it’s a socially responsible kind of arrogance. Plus there are things wrong with the psuedo-impossibility proof given in the previous paragraph. Yes, nobody has solved this particular problem yet, but judging the odds based on this problem alone is wildly misleading. People solve thousands of big problems a day, worldwide. The odds that a given person solves some problem, not necessarily this one, on given day are much higher than the perceived 10 billion to 1. The odds are still low, if the problem is a major one, but it is tractable and worth your time to try to solve it. Solving a major problem is closer to your odds of winning a chess tournament than winning the Powerball. The trick is to pick a problem, and give it a shot. And don’t worry, there are some tricks to solving problems, and they can be learned.&lt;/p&gt;
 
-&lt;p&gt;I’ve found that this “Undisciplined Method’’ (the haphazard trying of stuff) is surprisingly seductive for engineers trying to solve hard problems (among whom I count myself). It doesn’t require much in the way of planning or testing, which are easy to look at as overhead. It also lets me spend the vast majority of my time building things, which is what I love to do. It’s my suspicion that this tendency is a general human instinct, not just of interest to engineers.&lt;/p&gt;
+&lt;p&gt;So suppose that you can screw up your courage to believe for the briefest of moments that you’ll be able to accomplish something where everyone else has failed. What can you do? The first instinct is to start trying things as they occur to you: Think about your problem for a bit, come up with something that seems like it might work, try it, and if it fails, give up until you have another idea, and then start back at the beginning. In our example, this might be look like: tie a shirt around your head, and when it quickly becomes clear that this is doing very little to protect you, put the shirt back on, and wait until you think of something better. You might try stopping underneath a tree, on the theory that the tree is capturing smog and cleaning the air, but there aren’t enough trees on the routes you bike, and it doesn’t seem to help much, so you give up again.&lt;/p&gt;
 
-&lt;p&gt;The fact that the Undisciplined Method is so seductive makes it that much harder to really internalize what I’m about to say: It hardly ever works. For a problem of even modest complexity (machine learning research, product development, etc.) your intuition about what to try next is probably right 5% of the time, and you’ve got no meta-intuition about when that 5% is taking place.&lt;/p&gt;
+&lt;p&gt;I’ve found that this “Undisciplined Method’’ (the haphazard trying of stuff) is surprisingly seductive for engineers trying to solve hard problems (among whom I count myself). It doesn’t require much in the way of planning or testing, which are easy to look at as overhead. It also lets us spend the vast majority of our time building things, which is what we love to do. It’s my suspicion that this tendency is a general human instinct, not just of interest to engineers.&lt;/p&gt;
 
-&lt;p&gt;You might reasonably ask “Why is a low success-rate a problem? We’re working at the edge of human understanding here! You should be grateful for any progress you make at all.” You wouldn’t be wrong. This instinctive method was responsible for all human progress up through the Renaissance, and for much of progress since. But as with all things, there is a better way.&lt;/p&gt;
+&lt;p&gt;The fact that the Undisciplined Method is so seductive makes it that much harder to really internalize what I’m about to say: It hardly ever works. For a problem of even modest complexity (machine learning research, product development, fixing the smog in Beijing, etc.) your unguided intuition about what to try next is probably right &amp;lt;1% of the time, and you’ve got no meta-intuition about when that &amp;lt;1% is taking place.&lt;/p&gt;
 
-&lt;p&gt;Your most useful resource when you devote yourself to research is time. With infinite time, any reasonable strategy for knowledge discovery will work. But when there’s a paper deadline next weekend, there’s a much more concrete need to optimize your research process. In order to do that, we need a little bit more understanding.&lt;/p&gt;
+&lt;p&gt;You might reasonably ask “Why is a low success-rate a problem? We’re working at the edge of human understanding here! We should be grateful for any progress we make at all.” You wouldn’t be wrong. This instinctive method was responsible for all human progress up through the Renaissance, and for much of progress since. But as with all things, there is a better way.&lt;/p&gt;
 
-&lt;p&gt;I learned about the “Scientific Method’’ in high school, and at the time dismissed it as so obvious as to be completely useless. My impression of it wasn’t helped by worksheets where I was asked to “Form a hypothesis about what will happen to the apple when we drop it.’’ I would respond “It will fall. This is the stupidest class ever.’’ In my experience, for one reason or another, many researchers and would-be entrepreneurs have similarly dismissed the Scientific Method.&lt;/p&gt;
+&lt;p&gt;Your most useful resource when you devote yourself to research is time. With infinite time, any reasonable strategy for knowledge discovery will work. But when there’s a paper deadline next weekend, or the smog is literally killing you, there’s a much more concrete need to optimize your research process. In order to do that, we need a little bit more meta-understanding.&lt;/p&gt;
 
-&lt;p&gt;The Scientific Method is profound. The reason I felt it was useless in high school was because I was being asked to apply it to knowledge that was already well understood. When operating at the margins of human understanding, the Scientific Method forms a very strong foundation for success. This is best understood in contrast to the Undisciplined Method.&lt;/p&gt;
+&lt;p&gt;I learned about the “Scientific Method’’ in high school, and at the time dismissed it as so obvious as to be completely useless. My impression of it wasn’t helped by worksheets where I was asked to “Form a hypothesis about what will happen to the apple when we drop it.’’ I would respond “It will fall. This is the stupidest class ever.’’ In my experience, for one reason or another, many researchers and would-be entrepreneurs have similarly dismissed the “Scientific Method” in practice. They’ll still pay lip-service to its value, but they generally subscribe to the “Undisciplined Method” when pursuing solutions to hard problems.&lt;/p&gt;
+
+&lt;p&gt;Contrary to my high school impressions, the Scientific Method is profound. The reason I felt it was useless in high school was because I was being asked to apply it to knowledge that was already well understood. How could a high school impression be otherwise? A lesson plan for 6th graders attempting to explain the scientific method can’t reasonably ask the 6th graders to probe the unsolved mysteries of the universe in any teachable, replicable way in just a 20 minute class period. When actually operating at the margins of human understanding, howevor, the Scientific Method forms a very strong foundation for success. This is best understood in contrast to the Undisciplined Method.&lt;/p&gt;
 
 &lt;p&gt;The Undisciplined Method generates results poorly for several reasons: First, hypothesis and metrics to measure them are often poorly defined, so experimental validation is difficult and learning from failed experiments is hard. Second, there’s a lack of emphasis on data collection and understanding, for the dubious reason that it’s too time consuming to do so. This results in a poorer initial hypothesis on subsequent experiments. Third, there’s little or no thought at the beginning of an experiment to make sure that the information gained by the experiment is bought at a minimum cost of time and energy.&lt;/p&gt;
 
@@ -325,10 +108,9 @@ Keenon&lt;/p&gt;
 
 &lt;p&gt;None of this is easy in practice. I’m consistently amazed by business people rediscovering the Scientific Method by another name, and thinking they’ve uncovered something new. “The Lean Startup’’, “Data-Driven Management’’, and “Design Thinking’’ are buzzwords that come to mind. Really they’re all just proposing “Step 1: Science, Step 2: Profit’’. The reason that they keep selling books is because, while the Scientific Method is tremendously powerful, it is counter-intuitive, and emotionally difficult. It’s much easier to lapse back into the Undisciplined Method than any active researcher cares to admit.&lt;/p&gt;
 
-&lt;p&gt;So don’t. If you can muster the courage to try, and the discipline to follow through in the most efficient way, you could solve that hard problem, and it won’t take your whole career to do it :)&lt;/p&gt;
+&lt;p&gt;So don’t. If you can muster the courage to try, and the discipline to follow through in the most efficient way, you could solve that hard problem, and it won’t take your whole career to do it. So, I’m waiting on you: Fix that massive smog issue, and then get us a Mars colony :)&lt;/p&gt;
 
-&lt;p&gt;Cheers,
-Keenon&lt;/p&gt;
+&lt;p&gt;-Keenon&lt;/p&gt;
 </description>
         <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
         <link>http://keenon.github.io/science/2014/12/10/unsolved-problem.html</link>
