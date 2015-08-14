@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>There must be a better way</title>
-    <description>Keenon Werling rants about things, and leaves it on the Internet
+    <title>The science of managing science</title>
+    <description>Ideas about improving cooperation, process, and productivity in the creative sciences.
 </description>
     <link>http://keenon.github.io/</link>
     <atom:link href="http://keenon.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 14:27:53 -0700</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 14:27:53 -0700</lastBuildDate>
+    <pubDate>Fri, 14 Aug 2015 14:29:00 -0700</pubDate>
+    <lastBuildDate>Fri, 14 Aug 2015 14:29:00 -0700</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
