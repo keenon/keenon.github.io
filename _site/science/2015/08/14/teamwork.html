@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>The ''Cooperative Science'' Paradox</title>
-    <meta name="description" content="Ideas about improving cooperation, process, and productivity in the creative sciences.
+    <title>Organizing Cooperative Science</title>
+    <meta name="description" content="Ideas about improving cooperation, process, and productivity in computer science research.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
@@ -21,7 +21,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/">The science of managing science</a>
+    <a class="site-title" href="/">Metascience</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -57,7 +57,7 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">The ''Cooperative Science'' Paradox</h1>
+    <h1 class="post-title">Organizing Cooperative Science</h1>
     <p class="post-meta">Aug 14, 2015</p>
     <script type="text/javascript"
   		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -65,17 +65,37 @@
   </header>
 
   <article class="post-content">
-    <p>Imagine a tribe of hunter-gatherers living in the Great Plains of the American midwest, around year 1700. Buffallo are plentiful, and are the tribe’s primary source of food. A small number of tribe members manage the huts and everyday administration of the tribe, but the majority of the tribe’s members are hunters. Upon killing a buffallo, the individual responsible for throwing the spear that killed the buffallo is given tremendous glory, access to the best hut, and first pick on buffallo meat.</p>
+    <p>NOTE: Post under construction</p>
 
-<p>In this tribe, hunters work alone, because the credits for buffallo-kill-assists are marginal at best. An assist, while helping the tribe overall, will yield the individual no hut, and hardly any glory. The chieftan of the tribe doesn’t know where fat buffallo may be hiding, and so she sends hunters off in every direction, to hedge against the failure of any one hunting expedition. If all the hunting expeditions fail for too many weeks in a row, stores will run low, and the tribe will starve.</p>
+<p>I just got through <a href="http://shop.oreilly.com/product/0636920025849.do">Learning Agile</a>, which is an excellent introduction to Agile and several of its manifestations: Scrum, Extreme Programming, and Kanban. It’s gotten me thinking about teamwork in the Stanford AI lab or, more accurately, its absence.</p>
 
-<p>Substitue buffallo for papers, and we’ve got a reasonably accurate view of the academic working group in computer science.</p>
+<hr />
 
-<p>There’s a reason I chose such a primitive social structure to compare a lab to. I think we’re missing a fundamental cooperative “technology” to allow fruitful academic cooperation across individuals in order to tackle large scientific problems, and it’s within reach. In order to get there, though, we need to first understand where we are.</p>
+<p>As historical contrast for the modern project management science, let’s take a brief digression into the high stakes world of bomber design and manucturing. In <a href="http://www.amazon.com/Skunk-Works-Personal-Memoir-Lockheed/dp/0316743003">Skunk Works</a> the author (who was the head of the famous <a href="https://en.wikipedia.org/wiki/Skunk_Works">Lockheed Skunk Works</a> during the developement of the <a href="https://en.wikipedia.org/wiki/Lockheed_F-117_Nighthawk">Stealth Bomber</a>) occassionally takes a break from war stories to talk about the design process they used to create their paradigm-breaking airplanes.</p>
 
-<p>Incentives in academia:</p>
+<p>First, a salesman/engineer talks to a few generals over at the Pentagon, and gets a sense of operational requirements for a new plane. These requirements are usually found in a strategic plan someplace, and have been carefully considered by teams of slide-rule-equipped analysts. They’re also dead simple: must have a range of X miles, with a cruising height of Y, and be able to carry a payload of Z.</p>
 
-<p>It’s easy to see why the incentives for all the individuals in this scenario make it a stable point. A chieftan who moves all of the hunters into cooperating on a single hunt has trouble deciding how to allocate limited quality huts to a large successful group, and runs the risk of failure of all hunters during an expedition. It’s much safer to hedge and disperse. It also doesn’t make sense for hunters to unilaterally cooperate, except under very limited circumstances, because the gains from coopration are unclear and the rewards are given to a single individual.</p>
+<p>Then, a chief engineer sits down with the department heads (organized around critical engineering skills, like aerodynamics, thermodynamics, etc), and budgets out the rough specs for each component (landing gear, engines, wing lift, fuel tank capacity, etc). Appropriate parts are then found off-the-shelf whenever possible. Where not possible, the specs are given to more junior engineers, who design each component individually, with some guidance from the chief engineer. At the end, assuming everyone followed their specs, all the components are fit back together, shimmied a little to slot into place, and you’ve got a working plane (or atleast a design for one).</p>
+
+<p>Then, since only a few of each of these plane designs were ever produced (selling dozens would be considered a wild success), each one is assembled by hand. The Skunk Works had a (self-discribed) unique structure, at the time, where the engineers kept their desks in the same hangar as the manufacturing guys, and were in constant close communication as manufacturing realized that what had been drawn could not possibly be constructed as specified, and revisions were needed.</p>
+
+<p>Finally, the planes are built, and ready to be sailed off to the sunset (or Russia, as the case may be).</p>
+
+<hr />
+
+<p>Contrast that with the modern “Agile” approaches to software design, especially Scrum. Scrum is designed around the assumption that specifications are almost as difficult to write correctly as the software itself, and that the only way the customer will know that they don’t actually want what they asked for is for you to build it and show it to them.</p>
+
+<p>The method is to have the team meet for a full day at the beginning of every week to plan that week’s work. The work must culminate in something tangible that can be shown to customers. At the end of the week, the customer is presented with the work so far, and inevitably asks for a course correction.</p>
+
+<hr />
+
+<p>Bombers and software are clearly very different beasts, both called “engineering,” yet these processes are almost unrecognizably different. It’s worth contrasting the differences, to see if we can extrapolate to guidance for scientific cooperation.</p>
+
+<p>I’m going to invent some terminology here, though I’m almost certain the concepts are not new (Google can’t turn up the papers I need yet though, so I’m not certain what’s come before). Let’s call the bomber design process “recursive enhancement,” and the agile software design process “iterative enhancement.” Bomber design involves a master engineer outlining rough specifications for a section of the machine and recursively asking junior engineers to enhance the specifications with details, constrained by specifications from above. This can unfurl to arbitrary levels of detail. Scrum software design requires frequent changes of direction, and requires collaboration in short term planning and execution that may not lend itself to clean recursive structure.</p>
+
+<hr />
+
+<p>To be continued…</p>
 
   </article>
 
@@ -88,12 +108,12 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">The science of managing science</h2>
+    <h2 class="footer-heading">Metascience</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
-          <li>The science of managing science</li>
+          <li>Metascience</li>
           <li><a href="mailto:keenon@stanford.edu">keenon@stanford.edu</a></li>
         </ul>
       </div>
@@ -119,7 +139,7 @@
       </div>
 
       <div class="footer-col  footer-col-3">
-        <p class="text">Ideas about improving cooperation, process, and productivity in the creative sciences.
+        <p class="text">Ideas about improving cooperation, process, and productivity in computer science research.
 </p>
       </div>
     </div>

@@ -1,30 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>The science of managing science</title>
-    <description>Ideas about improving cooperation, process, and productivity in the creative sciences.
+    <title>Metascience</title>
+    <description>Ideas about improving cooperation, process, and productivity in computer science research.
 </description>
     <link>http://keenon.github.io/</link>
     <atom:link href="http://keenon.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 14 Aug 2015 14:29:00 -0700</pubDate>
-    <lastBuildDate>Fri, 14 Aug 2015 14:29:00 -0700</lastBuildDate>
+    <pubDate>Thu, 03 Sep 2015 15:36:34 -0500</pubDate>
+    <lastBuildDate>Thu, 03 Sep 2015 15:36:34 -0500</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
-        <title>The &#39;&#39;Cooperative Science&#39;&#39; Paradox</title>
-        <description>&lt;p&gt;Imagine a tribe of hunter-gatherers living in the Great Plains of the American midwest, around year 1700. Buffallo are plentiful, and are the tribe’s primary source of food. A small number of tribe members manage the huts and everyday administration of the tribe, but the majority of the tribe’s members are hunters. Upon killing a buffallo, the individual responsible for throwing the spear that killed the buffallo is given tremendous glory, access to the best hut, and first pick on buffallo meat.&lt;/p&gt;
+        <title>Organizing Cooperative Science</title>
+        <description>&lt;p&gt;NOTE: Post under construction&lt;/p&gt;
 
-&lt;p&gt;In this tribe, hunters work alone, because the credits for buffallo-kill-assists are marginal at best. An assist, while helping the tribe overall, will yield the individual no hut, and hardly any glory. The chieftan of the tribe doesn’t know where fat buffallo may be hiding, and so she sends hunters off in every direction, to hedge against the failure of any one hunting expedition. If all the hunting expeditions fail for too many weeks in a row, stores will run low, and the tribe will starve.&lt;/p&gt;
+&lt;p&gt;I just got through &lt;a href=&quot;http://shop.oreilly.com/product/0636920025849.do&quot;&gt;Learning Agile&lt;/a&gt;, which is an excellent introduction to Agile and several of its manifestations: Scrum, Extreme Programming, and Kanban. It’s gotten me thinking about teamwork in the Stanford AI lab or, more accurately, its absence.&lt;/p&gt;
 
-&lt;p&gt;Substitue buffallo for papers, and we’ve got a reasonably accurate view of the academic working group in computer science.&lt;/p&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;There’s a reason I chose such a primitive social structure to compare a lab to. I think we’re missing a fundamental cooperative “technology” to allow fruitful academic cooperation across individuals in order to tackle large scientific problems, and it’s within reach. In order to get there, though, we need to first understand where we are.&lt;/p&gt;
+&lt;p&gt;As historical contrast for the modern project management science, let’s take a brief digression into the high stakes world of bomber design and manucturing. In &lt;a href=&quot;http://www.amazon.com/Skunk-Works-Personal-Memoir-Lockheed/dp/0316743003&quot;&gt;Skunk Works&lt;/a&gt; the author (who was the head of the famous &lt;a href=&quot;https://en.wikipedia.org/wiki/Skunk_Works&quot;&gt;Lockheed Skunk Works&lt;/a&gt; during the developement of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Lockheed_F-117_Nighthawk&quot;&gt;Stealth Bomber&lt;/a&gt;) occassionally takes a break from war stories to talk about the design process they used to create their paradigm-breaking airplanes.&lt;/p&gt;
 
-&lt;p&gt;Incentives in academia:&lt;/p&gt;
+&lt;p&gt;First, a salesman/engineer talks to a few generals over at the Pentagon, and gets a sense of operational requirements for a new plane. These requirements are usually found in a strategic plan someplace, and have been carefully considered by teams of slide-rule-equipped analysts. They’re also dead simple: must have a range of X miles, with a cruising height of Y, and be able to carry a payload of Z.&lt;/p&gt;
 
-&lt;p&gt;It’s easy to see why the incentives for all the individuals in this scenario make it a stable point. A chieftan who moves all of the hunters into cooperating on a single hunt has trouble deciding how to allocate limited quality huts to a large successful group, and runs the risk of failure of all hunters during an expedition. It’s much safer to hedge and disperse. It also doesn’t make sense for hunters to unilaterally cooperate, except under very limited circumstances, because the gains from coopration are unclear and the rewards are given to a single individual.&lt;/p&gt;
+&lt;p&gt;Then, a chief engineer sits down with the department heads (organized around critical engineering skills, like aerodynamics, thermodynamics, etc), and budgets out the rough specs for each component (landing gear, engines, wing lift, fuel tank capacity, etc). Appropriate parts are then found off-the-shelf whenever possible. Where not possible, the specs are given to more junior engineers, who design each component individually, with some guidance from the chief engineer. At the end, assuming everyone followed their specs, all the components are fit back together, shimmied a little to slot into place, and you’ve got a working plane (or atleast a design for one).&lt;/p&gt;
+
+&lt;p&gt;Then, since only a few of each of these plane designs were ever produced (selling dozens would be considered a wild success), each one is assembled by hand. The Skunk Works had a (self-discribed) unique structure, at the time, where the engineers kept their desks in the same hangar as the manufacturing guys, and were in constant close communication as manufacturing realized that what had been drawn could not possibly be constructed as specified, and revisions were needed.&lt;/p&gt;
+
+&lt;p&gt;Finally, the planes are built, and ready to be sailed off to the sunset (or Russia, as the case may be).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Contrast that with the modern “Agile” approaches to software design, especially Scrum. Scrum is designed around the assumption that specifications are almost as difficult to write correctly as the software itself, and that the only way the customer will know that they don’t actually want what they asked for is for you to build it and show it to them.&lt;/p&gt;
+
+&lt;p&gt;The method is to have the team meet for a full day at the beginning of every week to plan that week’s work. The work must culminate in something tangible that can be shown to customers. At the end of the week, the customer is presented with the work so far, and inevitably asks for a course correction.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Bombers and software are clearly very different beasts, both called “engineering,” yet these processes are almost unrecognizably different. It’s worth contrasting the differences, to see if we can extrapolate to guidance for scientific cooperation.&lt;/p&gt;
+
+&lt;p&gt;I’m going to invent some terminology here, though I’m almost certain the concepts are not new (Google can’t turn up the papers I need yet though, so I’m not certain what’s come before). Let’s call the bomber design process “recursive enhancement,” and the agile software design process “iterative enhancement.” Bomber design involves a master engineer outlining rough specifications for a section of the machine and recursively asking junior engineers to enhance the specifications with details, constrained by specifications from above. This can unfurl to arbitrary levels of detail. Scrum software design requires frequent changes of direction, and requires collaboration in short term planning and execution that may not lend itself to clean recursive structure.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;To be continued…&lt;/p&gt;
 </description>
-        <pubDate>Fri, 14 Aug 2015 16:05:34 -0700</pubDate>
+        <pubDate>Fri, 14 Aug 2015 18:05:34 -0500</pubDate>
         <link>http://keenon.github.io/science/2015/08/14/teamwork.html</link>
         <guid isPermaLink="true">http://keenon.github.io/science/2015/08/14/teamwork.html</guid>
         
@@ -61,7 +81,7 @@
 &lt;p&gt;Cheers,
 Keenon&lt;/p&gt;
 </description>
-        <pubDate>Tue, 13 Jan 2015 03:53:34 -0800</pubDate>
+        <pubDate>Tue, 13 Jan 2015 05:53:34 -0600</pubDate>
         <link>http://keenon.github.io/opensource/2015/01/13/quickcheck.html</link>
         <guid isPermaLink="true">http://keenon.github.io/opensource/2015/01/13/quickcheck.html</guid>
         
@@ -112,7 +132,7 @@ Keenon&lt;/p&gt;
 
 &lt;p&gt;-Keenon&lt;/p&gt;
 </description>
-        <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
+        <pubDate>Wed, 10 Dec 2014 17:05:34 -0600</pubDate>
         <link>http://keenon.github.io/science/2014/12/10/unsolved-problem.html</link>
         <guid isPermaLink="true">http://keenon.github.io/science/2014/12/10/unsolved-problem.html</guid>
         
