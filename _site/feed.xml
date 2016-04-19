@@ -2,189 +2,81 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Metascience</title>
-    <description>Ideas about improving cooperation, process, and productivity in computer science research.
-</description>
+    <description>Where I write about my lessons learned as an AI researcher trying to start a company.</description>
     <link>http://keenon.github.io/</link>
-    <atom:link href="http://keenon.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 17 Nov 2015 17:23:30 -0800</pubDate>
-    <lastBuildDate>Tue, 17 Nov 2015 17:23:30 -0800</lastBuildDate>
-    <generator>Jekyll v2.4.0</generator>
+    <atom:link href="http://keenon.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 18 Apr 2016 17:53:31 -0700</pubDate>
+    <lastBuildDate>Mon, 18 Apr 2016 17:53:31 -0700</lastBuildDate>
+    <generator>Jekyll v3.1.3</generator>
     
       <item>
-        <title>Better Testing for Bulletproof Software</title>
-        <description>&lt;p&gt;TLDR: Quickcheck has a Java port that’s compatible with JUnit! It’s &lt;a href=&quot;https://github.com/pholser/junit-quickcheck&quot;&gt;on Github&lt;/a&gt;. I now use this for everything :)&lt;/p&gt;
+        <title>On funnels</title>
+        <description>&lt;p&gt;In business, I’ve noticed that the biggest design pattern seems to be the “funnel,” so I thought I would write a quick post about it.&lt;/p&gt;
 
-&lt;p&gt;In research, we often report results from the outputs of fundamentally broken, overgrown, duct-tape programs written in some typeless language with a few half hearted unit tests, if any. By informal estimates from around the lab, we seem to believe we tend to lose between 2 and 5 percent output accuracy to completely preventable bugs, unrelated to the science we’re trying to prove about approaches. Those are huge numbers, and require radical changes to our testing habits to fix.&lt;/p&gt;
+&lt;p&gt;A business “funnel” is any process where you lose items as they progress through your system. For example: sales. In sales, your “sales funnel” turns email addresses into meetings (and loses 95% of them in the process), then turns meetings into sales (and loses another 50%). Your “hiring funnel” works in a similar way (find candidates on LinkedIn, turn those into initial meetings, turn those into interviews, turn those into offers, bargain those into final paperwork). If you’re raising money, you’ll also have a “fundraising funnel” (which turns VCs into meetings, meetings into terms sheets, then terms sheets into money in the bank).&lt;/p&gt;
 
-&lt;p&gt;Hackers (the breaking and entering kind, not the warm and fuzzy variety) are in the actual business of bug finding. Unlike the rest of us, who are in the business of bug creation, these professionals have tools that actually work for bug discovery. They have one technique in particular that I (until recently) had cause to envy, called ‘fuzzing’. Fuzzing works something like this: When faced with a new system that needs to be broken into, a black hat will write a script to pass random inputs to the system, and then she will run her script until the system crashes and she gets a stack trace. She then pokes around in the vicinity of the stack trace frames until she find a buffer whose bounds aren’t being checked, and then (I’m simplifying here) after a little copy paste from the famous &lt;a href=&quot;http://phrack.org/issues/49/14.html&quot;&gt;aleph1&lt;/a&gt;, it’s off to &lt;a href=&quot;https://www.torproject.org/projects/torbrowser.html.en&quot;&gt;Tor&lt;/a&gt; to find the highest bidder for her new &lt;a href=&quot;https://en.wikipedia.org/wiki/Zero-day_(computing)&quot;&gt;0 day&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Everything that involves getting people to change their behavior (buy from you, work for you, give you money) will involve people saying “no” at every step of the process, and so is helpful to think of as a funnel.&lt;/p&gt;
 
-&lt;p&gt;It’s only recently that we bug creators have started to catch up with our own (more powerful) variant of fuzzing tools. Quickcheck (&lt;a href=&quot;http://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf&quot;&gt;original paper&lt;/a&gt;) is a testing system that can be best explained as fuzz testing on crack, and for the good guys. The basic idea here is to write generators of random inputs, and a functional way to validate outputs are correct, and then let you test suite do the hard work of thinking up all the edge cases you forgot about. This is great, because you will get stack frames and inputs when the system finds a bug that crashes your system, but you’ll also get real confidence that your system produces outputs that conform to all sorts of functional invariants.&lt;/p&gt;
-
-&lt;p&gt;The original Quickcheck was written for Haskell, but in practice real people don’t use functional languages much. There is a &lt;a href=&quot;https://github.com/pholser/junit-quickcheck&quot;&gt;JUnit Quickcheck port&lt;/a&gt; for the rest of us, and it’s what I recommend if you’re a Java person.&lt;/p&gt;
-
-&lt;p&gt;Assuming you’re with me on the rough desirability of functional, randomly generated tests, then there’s one more problem that needs careful thought: don’t we have a chicken and egg problem here in terms of validating inputs? If we need to be able to tell if our program’s output is correct for any random input in order to write these tests, don’t the tests need as much functionality as the underlying program, thus needing tests themselves? What if your test and program have the same bug? Is it turtles all the way down?&lt;/p&gt;
-
-&lt;p&gt;Here’s some guidelines I’ve developed to help me through these issues, and build confidence in my functional tests:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Use different algorithms for the test validity check and the program being tested, so the intersection of the possible bugs is a smaller space&lt;/li&gt;
-  &lt;li&gt;Also write asserts for output invariants that don’t have to do with getting exactly the right answer, but that reduce the space of possible bugs even further&lt;/li&gt;
-  &lt;li&gt;Use the slower (even intractible exhaustive enumeration) algorithm for the test, because those algorithms tend to be obviously correct by just reading. Then you can restrict that test to tractably small inputs, and be sure the answers are right for those inputs.&lt;/li&gt;
-  &lt;li&gt;If you can generate the right answer along with the input somehow, always do that, rather than calculate in the test. This is rarely possible though.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Since I hate programming advice that is all sweeping platitudes and no concrete examples, here’s a scenario: I recently found myself writing a probabalistic graphical model library for Stanford’s CoreNLP. When writing a PGM library, there are a few complicated algorithms that need to be checked. &lt;/p&gt;
-
-&lt;p&gt;The scariest part is the inference algorithm, an implementation of message passing in tree shaped clique trees. Message passing involves a lot of tricky manipulations and data flows that are easy to mess up. The trick for testing is that the result should be identical to a brute force factor multiplication approach. Normally doing out a brute force computation is intractible, hence message passing, but at small input sizes it’s totally fine. So the test is to generate hundreds of just-tractable clique trees and check that message passing and brute force yield the same answer for all inputs.&lt;/p&gt;
-
-&lt;p&gt;There were a few other tricks. For the learning system, write a brute force gradient calculator and check its outputs against your gradient computation on a few thousand random examples. For the optimizer, take the termination point on a random problem, check in a few thousand short random vector directions that nothing in the space has a better value. For spare-dense vector datastructures, check that the naive dense implementation using arrays performs identically. For factor objects that need to be able to multiply and sum-out, do post-hoc checks that after you’ve summed out or multiplied that each element in the resulting factor makes sense (sum &amp;gt;= each element, when all are non-negative, for example).&lt;/p&gt;
-
-&lt;p&gt;Despite their relative simpliciy, these tests ended up being almost as much software as the software it was testing, and sometimes more. How do you ensure the tests don’t have bugs? Do the tests need tests?&lt;/p&gt;
-
-&lt;p&gt;Of course the tests need tests. But that’s the beauty of it: your real program acts as a test for your tests. My advisor Chris Manning once described the usefulness of testing to me as “taking intersections of sets”. If the output spaces of two programs taking different algorithmic approaches to the same problem match, then the likelihood of both having the same bug is very low. Algorithms tend to bring with them their own “set” of bugs (in the mathematical sense), and if you intersect two possible sets, the result is much smaller. Of course if you really wanted added assurance, you could continue to intersect programs, and each time you gain the confidence that your output is correct, because the likelihood of independently replicating the same bug in N programs is geometrically decreasing in N, but N=2 seems good enough for most issues.&lt;/p&gt;
-
-&lt;p&gt;If your two algorithms do disagree, the bug may equally likely be in either the test or the code. This can be unnerving for people who are used to using tests as documentation. Fixing the tests to agree with the code seems like “cheating,” even if the tests were wrong. Once you get over the emotional response, though, and you’ve diagnosed and fixed the bug, whether it was in the test algorithm or the production one, you’re much more likely to have solved the underlying bugs in the code, because the only remaining bugs that are possible are those in that intersection space. And that intersection space, if you’ve done your job right, is so small that even if it does exist, downstream dependencies will never notice.&lt;/p&gt;
-
-&lt;p&gt;-Keenon&lt;/p&gt;
+&lt;p&gt;What’s really interesting (to my engineering brain anyways) is the organizational clarity that thinking of business processes as a “funnel” gives you. We use Trello to keep a board for each funnel our business is operating, and have a column for each stage of your pipeline. We put a card on the board for each person traversing the pipeline, with any notes we need. It’s been very helpful (and sometimes surprising) to see how many cards are in each stage of each funnel. It’s much easier to manage what you can see.&lt;/p&gt;
 </description>
-        <pubDate>Tue, 13 Jan 2015 03:53:34 -0800</pubDate>
-        <link>http://keenon.github.io/opensource/2015/01/13/quickcheck.html</link>
-        <guid isPermaLink="true">http://keenon.github.io/opensource/2015/01/13/quickcheck.html</guid>
+        <pubDate>Mon, 18 Apr 2016 16:05:34 -0700</pubDate>
+        <link>http://keenon.github.io/sales/2016/04/18/funnel.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/sales/2016/04/18/funnel.html</guid>
         
         
-        <category>opensource</category>
+        <category>sales</category>
         
       </item>
     
       <item>
-        <title>The &#39;&#39;Unsolved Problem&#39;&#39; Problem</title>
-        <description>&lt;p&gt;Suppose your life depends on solving a problem that nobody in the world knows how to solve. Let’s make it concrete, and suppose that you’re about to get lung cancer from the pollution in Beijing, where you live and work as a bicycle messenger. You cannot afford a mask, yet you exercise and breathe heavily in the worst parts of down town Beijing for 12 hours a day, and the residue in your lungs is slowly building up to lethal levels. You cannot quit your job, because it is the best paid work available, and you family (who still live in the country side) are dependant on monthly payments you send home out of your paycheck. The problem you need to solve in a narrow sense is the too rapid approach of your death due to toxicity, and the effect your premature death would have on your family. In the grander sense, your problem is the smog in downtown Beijing, that has gotten so bad that you can’t see from one city block to the next.&lt;/p&gt;
+        <title>On learning to sell (anything) in Silicon Valley</title>
+        <description>&lt;p&gt;Sales is the life blood of a startup in using a B2B (“business to business”) model. If you don’t have money coming in from sales, you have to raise money from VCs instead (read “sell your soul,” if they’ll even buy it). You really really want to have sales.&lt;/p&gt;
 
-&lt;p&gt;A natural (and socially modest) instinct might be to lose hope. After all, the world is a very large place, and if none of its 7.125 billion people have already solved this problem, it must be very hard indeed. Why should you believe you’re special in any way? Assuming a uniform prior on a given person seleced at random from humanity being able to solve this problem, then the empirical odds (if you’re a Bayesian statistician) put it at 7.125 billion (+1) to 1 that you (an average human with access to today’s technology) can solve this problem. Wouldn’t it be arrogant to assume you’d be the one to solve it?&lt;/p&gt;
+&lt;p&gt;So how does one get sales? In one word: questions. Ask lots and lots of them. Listen carefully to how people respond. Don’t pitch, brainstorm solutions to problems with your potential customer. You’re a consultant, who happens to also be in the business of solving this particular problem.&lt;/p&gt;
 
-&lt;p&gt;Perhaps it is, just a little, but it’s a socially responsible kind of arrogance. Plus there are things wrong with the psuedo-impossibility proof given in the previous paragraph. Yes, nobody has solved this particular problem yet, but judging the odds based on this problem alone is wildly misleading. People solve thousands of big problems a day, worldwide. The odds that a given person solves some problem, not necessarily this one, on given day are much higher than the perceived 10 billion to 1. The odds are still low, if the problem is a major one, but it is tractable and worth your time to try to solve it. Solving a major problem is closer to your odds of winning a chess tournament than winning the Powerball. The trick is to pick a problem, and give it a shot. And don’t worry, there are some tricks to solving problems, and they can be learned.&lt;/p&gt;
+&lt;h3 id=&quot;how-to-google-for-help&quot;&gt;How to Google for help&lt;/h3&gt;
 
-&lt;p&gt;So suppose that you can screw up your courage to believe for the briefest of moments that you’ll be able to accomplish something where everyone else has failed. What can you do? The first instinct is to start trying things as they occur to you: Think about your problem for a bit, come up with something that seems like it might work, try it, and if it fails, give up until you have another idea, and then start back at the beginning. In our example, this might be look like: tie a shirt around your head, and when it quickly becomes clear that this is doing very little to protect you, put the shirt back on, and wait until you think of something better. You might try stopping underneath a tree, on the theory that the tree is capturing smog and cleaning the air, but there aren’t enough trees on the routes you bike, and it doesn’t seem to help much, so you give up again.&lt;/p&gt;
+&lt;p&gt;Let’s start with what Google words to use: “sales leads” are basically just email addresses tied to some position at a company (CTO, VP of X, etc) that might want to buy your product. You can buy lists of leads online through lots of services (Google “buy leads”, and be shocked by the number of paid listings). “Prospecting” is the process of sending cold emails to your leads to see who will give you a phone call or a meeting. A “sales methodology” is a system for what to do once you get the meeting/phone call, that will help get you to a “close” (somebody writing you a check, which is the whole point).&lt;/p&gt;
 
-&lt;p&gt;I’ve found that this “Undisciplined Method’’ (the haphazard trying of stuff) is surprisingly seductive for engineers trying to solve hard problems (among whom I count myself). It doesn’t require much in the way of planning or testing, which are easy to look at as overhead. It also lets us spend the vast majority of our time building things, which is what we love to do. It’s my suspicion that this tendency is a general human instinct, not just of interest to engineers.&lt;/p&gt;
+&lt;h3 id=&quot;resources-to-start-with&quot;&gt;Resources to start with&lt;/h3&gt;
 
-&lt;p&gt;The fact that the Undisciplined Method is so seductive makes it that much harder to really internalize what I’m about to say: It hardly ever works. For a problem of even modest complexity (machine learning research, product development, fixing the smog in Beijing, etc.) your unguided intuition about what to try next is probably right &amp;lt;1% of the time, and you’ve got no meta-intuition about when that &amp;lt;1% is taking place.&lt;/p&gt;
-
-&lt;p&gt;You might reasonably ask “Why is a low success-rate a problem? We’re working at the edge of human understanding here! We should be grateful for any progress we make at all.” You wouldn’t be wrong. This instinctive method was responsible for all human progress up through the Renaissance, and for much of progress since. But as with all things, there is a better way.&lt;/p&gt;
-
-&lt;p&gt;Your most useful resource when you devote yourself to research is time. With infinite time, any reasonable strategy for knowledge discovery will work. But when there’s a paper deadline next weekend, or the smog is literally killing you, there’s a much more concrete need to optimize your research process. In order to do that, we need a little bit more meta-understanding.&lt;/p&gt;
-
-&lt;p&gt;I learned about the “Scientific Method’’ in high school, and at the time dismissed it as so obvious as to be completely useless. My impression of it wasn’t helped by worksheets where I was asked to “Form a hypothesis about what will happen to the apple when we drop it.’’ I would respond “It will fall. This is the stupidest class ever.’’ In my experience, for one reason or another, many researchers and would-be entrepreneurs have similarly dismissed the “Scientific Method” in practice. They’ll still pay lip-service to its value, but they generally subscribe to the “Undisciplined Method” when pursuing solutions to hard problems.&lt;/p&gt;
-
-&lt;p&gt;Contrary to my high school impressions, the Scientific Method is profound. The reason I felt it was useless in high school was because I was being asked to apply it to knowledge that was already well understood. How could a high school impression be otherwise? A lesson plan for 6th graders attempting to explain the scientific method can’t reasonably ask the 6th graders to probe the unsolved mysteries of the universe in any teachable, replicable way in just a 20 minute class period. When actually operating at the margins of human understanding, howevor, the Scientific Method forms a very strong foundation for success. This is best understood in contrast to the Undisciplined Method.&lt;/p&gt;
-
-&lt;p&gt;The Undisciplined Method generates results poorly for several reasons: First, hypothesis and metrics to measure them are often poorly defined, so experimental validation is difficult and learning from failed experiments is hard. Second, there’s a lack of emphasis on data collection and understanding, for the dubious reason that it’s too time consuming to do so. This results in a poorer initial hypothesis on subsequent experiments. Third, there’s little or no thought at the beginning of an experiment to make sure that the information gained by the experiment is bought at a minimum cost of time and energy.&lt;/p&gt;
-
-&lt;p&gt;The Scientific Method, when followed rigorously, addresses these issues. &lt;/p&gt;
+&lt;p&gt;Here are some excellent resources:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Begin with understanding existing approaches, and collect data.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Spend time understanding your data before forming your first hypothesis.&lt;/em&gt; This may feel like a waste of time initially. &lt;em&gt;It is not.&lt;/em&gt; A poor initial hypothesis wastes far more time than a few days of data analysis.&lt;/li&gt;
-  &lt;li&gt;Form an educated, &lt;em&gt;falsifiable&lt;/em&gt; hypothesis about a solution to your problem. Think hard about the tests you will run, and the way you will diagnose and learn from this experiment if it fails to solve your problem.&lt;/li&gt;
-  &lt;li&gt;Only then, build it, and run the experiment (this will still take the most time of any of these steps, absent a good framework to do this for you).&lt;/li&gt;
-  &lt;li&gt;Run the error analysis you planned in advance. If the experiment proves a failure, which is the likely outcome, gather what information you can, incorporate that into your existing understanding of the problem, and go back to form another hypothesis.&lt;/li&gt;
+  &lt;li&gt;Kris Duggan talking about sales for an hour: https://www.youtube.com/watch?v=wKVsEENwHYs&lt;/li&gt;
+  &lt;li&gt;An excellent book: “You can’t teach a kid to ride a bike at a seminar”, by David H. Sandler&lt;/li&gt;
+  &lt;li&gt;Really serious? Start a company and join an incubator like Alchemist (http://alchemistaccelerator.com/) and get personal coaching&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The hard part here is hypothesis formation, and there’s no way to do it right, so you’ll have to settle for doing it “pretty good’’ by making tons of measurements in advance of any hypothesis. Any idiot with sufficient data and time can come up with a reasonable idea of what to try. Testing that reasonable idea, as long as you have good measurements in place, will bring you that much closer to a solution, and if that still doesn’t work, try, try again.&lt;/p&gt;
+&lt;h3 id=&quot;practicing-in-the-wild&quot;&gt;Practicing in the wild&lt;/h3&gt;
 
-&lt;p&gt;None of this is easy in practice. I’m consistently amazed by business people rediscovering the Scientific Method by another name, and thinking they’ve uncovered something new. “The Lean Startup’’, “Data-Driven Management’’, and “Design Thinking’’ are buzzwords that come to mind. Really they’re all just proposing “Step 1: Science, Step 2: Profit’’. The reason that they keep selling books is because, while the Scientific Method is tremendously powerful, it is counter-intuitive, and emotionally difficult. It’s much easier to lapse back into the Undisciplined Method than any active researcher cares to admit.&lt;/p&gt;
+&lt;p&gt;Practicing sales is nothing like learning to code. You need to have something to sell, and somebody to sell it to. It’s embarrassing to mess up, and it’s hard to recover and try again with the same person.&lt;/p&gt;
 
-&lt;p&gt;So don’t. If you can muster the courage to try, and the discipline to follow through in the most efficient way, you could solve that hard problem, and it won’t take your whole career to do it. So, I’m waiting on you: Fix that massive smog issue, and then get us a Mars colony :)&lt;/p&gt;
-
-&lt;p&gt;-Keenon&lt;/p&gt;
+&lt;p&gt;This makes it really hard to learn for us engineers. One way (for the very determined) is to join a startup, and see if you can convince them to let you go make sales calls (not as your day job, which should still be code, just occasionally to help you learn). If you’re incredibly adventurous, and have a reasonable back-up plan, you could even try to start your own company and build something people want to buy.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
-        <link>http://keenon.github.io/science/2014/12/10/unsolved-problem.html</link>
-        <guid isPermaLink="true">http://keenon.github.io/science/2014/12/10/unsolved-problem.html</guid>
+        <pubDate>Fri, 08 Apr 2016 16:05:34 -0700</pubDate>
+        <link>http://keenon.github.io/sales/2016/04/08/sales.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/sales/2016/04/08/sales.html</guid>
         
         
-        <category>science</category>
+        <category>sales</category>
         
       </item>
     
       <item>
-        <title>A Quick Intro to Loglinear Models</title>
-        <description>&lt;h3 id=&quot;disclaimer&quot;&gt;Disclaimer:&lt;/h3&gt;
+        <title>Keenon restarts his blog</title>
+        <description>&lt;p&gt;I’m venturing out into the world to found a company as I graduate from Stanford. I’ve decided that documenting what I learn out in the world will be much more interesting to the denizens of the internet than the dusty old posts that used to clutter up this blog, so I’m starting over.&lt;/p&gt;
 
-&lt;p&gt;This is not intended as a complete introduction to PGMs. You should take a look at Daphne’s excellent &lt;a href=&quot;https://www.coursera.org/course/pgm&quot;&gt;Coursera course&lt;/a&gt; for a more complete treatment of this material. This post is intended only to introduce a narrow subset of PGM theory (undirected log-linear models). There’s lots of interesting stuff we won’t cover here, so if you have the time I recommend you check it out!&lt;/p&gt;
+&lt;p&gt;From here on out, my target audience is myself from 6 months ago. Basically, someone who is excited about becoming an entrepreneur, has some marketable technical skills, but doesn’t have a clue about how to sell, raise money, or run a company.&lt;/p&gt;
 
-&lt;h3 id=&quot;joint-distributions&quot;&gt;Joint Distributions:&lt;/h3&gt;
-
-&lt;p&gt;When we write down probability distributions, we often do so in a table.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;X&lt;/th&gt;
-      &lt;th&gt;P(X)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;0.75&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;0.25&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;This is a simple, powerful concept. In order to learn the values in the table, we can expand this concept with the central insight of machine learning, a feature vector. Let’s write that as:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;X&lt;/th&gt;
-      &lt;th&gt;f(X)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;[0.5, 0.5]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;[0.5, -0.5]&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Now if we want to get out a distribution table, we dot product &lt;/p&gt;
-
-&lt;h3 id=&quot;ye-olde-basic-table-model&quot;&gt;Ye Olde Basic Table Model:&lt;/h3&gt;
-
-&lt;p&gt;Suppose you have a bunch of discrete random variables $X_1, \ldots, X_n$, and they’re not independent. 
-You’re interested in learning the joint distribution $P(X_1, \ldots, X_n)$, and then doing typical machine learning things with it, like finding the assignment of $X_1 = x_1, \ldots, X_n = x_n$ with the highest probability.&lt;/p&gt;
-
-&lt;p&gt;For example, let’s imagine a toy situation where somebody rolls a die, and then gives you two integers, $X_1$ and $X_2$, that sum to the amount shown on the die.
-A simple model, that actually works fine in some simple practical situations, is to write down a big table.&lt;/p&gt;
-
-&lt;p&gt;One trivial algorithm is to simply write down a big table to represent $P(X_1, \ldots, X_n)$. For any given assigment $X_1 = x_1, \ldots, X_n = x_n$ you can look up an entry in the table, and the value is equal to $P(X_1 = x_1, \ldots, X_n = x_n)$.&lt;/p&gt;
-
-&lt;p&gt;Before we get to the obvious intractability, it’s worth noting how great this “giant table” strategy would be if we had infinite compute. We make no independence assumptions, given enough data we can estimate the table directly from counting, and finding the most likely entry is easy (just find the table entry with the largest value).&lt;/p&gt;
-
-&lt;p&gt;Problem Setting:
-	- want to relate a bunch of variables
-Giant Table Strategy:
-	- log linear models
-Intractability:
-	- factorize
-	- do clever things for expectation&lt;/p&gt;
+&lt;p&gt;Hopefully by writing this blog I can help people avoid my mistakes I make as I make them. I also hope it will serve as a useful place I can refer people to when I get asked questions about the startup process. Mostly, this is really just something I wish I had had access to starting out, so I’m trying to create it for the next generation.&lt;/p&gt;
 </description>
-        <pubDate>Wed, 10 Dec 2014 15:05:34 -0800</pubDate>
-        <link>http://keenon.github.io/science/2014/12/10/loglinear.html</link>
-        <guid isPermaLink="true">http://keenon.github.io/science/2014/12/10/loglinear.html</guid>
+        <pubDate>Sat, 12 Mar 2016 15:05:34 -0800</pubDate>
+        <link>http://keenon.github.io/life/2016/03/12/restart.html</link>
+        <guid isPermaLink="true">http://keenon.github.io/life/2016/03/12/restart.html</guid>
         
         
-        <category>science</category>
+        <category>life</category>
         
       </item>
     
