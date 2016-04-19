@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "On learning to sell (anything) in Silicon Valley"
 date:   2016-4-8 23:05:34
 categories: sales

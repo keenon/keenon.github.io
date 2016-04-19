@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Keenon restarts his blog"
 date:   2016-3-12 23:05:34
 categories: life
