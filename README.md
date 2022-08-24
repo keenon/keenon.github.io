@@ -1,4 +1,4 @@
 keenon
 ======
 
-My github IO blog, started on the advice of Jon
+My personal homepage and blog.
