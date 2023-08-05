@@ -7,4 +7,8 @@
     .GUI_title {
         font-size: 10px !important;
     }
+
+    .viz-holder {
+        height: calc(100vh - 70px) !important;
+    }
 }
