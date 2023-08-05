@@ -1,0 +1,10 @@
+@media screen and (max-width: 600px) {
+    .DARTWindow-ui-elem {
+        font-size: 10px;
+        max-width: 100px;
+    }
+
+    .GUI_title {
+        font-size: 10px !important;
+    }
+}
