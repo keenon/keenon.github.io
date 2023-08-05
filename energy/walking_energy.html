@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="src/embeddable.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            console.log("Attempting to embed Nimble Visualizer!");
+            var div = document.getElementById("window");
+            console.log(div);
+            window.embedNimbleVisualizer(div, "https://addbiomechanics.org/visualizations/walking_energy.bin.gz", 0.20);
+        });
+    </script>
+</head>
+
+<body>
+    <div style="width: calc(100vw - 20px); height: calc(100vh - 20px);" id="window">
+    </div>
+</body>
